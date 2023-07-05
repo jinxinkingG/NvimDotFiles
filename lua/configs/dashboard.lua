@@ -28,7 +28,7 @@ return{
 		mru = { limit = 10},
 		footer = {
 			'						',
-			'🚀 Sharp tools make good work.	JinJin♥️JoJo&2023'
+			'🚀 Sharp tools make good work.	JinJin♥️ JoJo @2023'
 		}
 	},    --  config used for theme
 	hide = {

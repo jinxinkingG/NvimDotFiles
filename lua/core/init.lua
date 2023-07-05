@@ -1,10 +1,13 @@
 -- change startup folder
+if vim.fn.has "mac" ==1 or vim.fn.has "linux" ==1 then
+else
 vim.cmd[[
 augroup cdpwd
     autocmd!
     autocmd VimEnter * cd C:\Users\jinxin\AppData\Local\nvim 
 augroup END
 ]]
+end
 -- load lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
