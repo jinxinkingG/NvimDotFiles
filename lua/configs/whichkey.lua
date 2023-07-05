@@ -1,5 +1,4 @@
-local M;
-M = {
+return {
   plugins = {
     marks = true, -- shows a list of your marks on ' and `
     registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
@@ -87,4 +86,3 @@ M = {
     filetypes = {},
   },
 }
-return M
