@@ -3,10 +3,12 @@ vim.cmd[[set guifont=MesloLGL\ Nerd\ Font\ Mono:h12]]
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
-keymap("n", "<Space>", "", opts)
-keymap("i", "jk","<Esc>",opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+
+keymap("n", "<Space>", "", opts)
+keymap("i", "jk","<Esc>",opts)
+keymap("","<leader>q",":q!<CR>",opts)
 
 local timestamp = os.time()%5
 print(timestamp)

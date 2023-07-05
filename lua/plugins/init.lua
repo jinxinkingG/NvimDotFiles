@@ -24,7 +24,7 @@ return require("lazy").setup({
   	--neodev
 	{"folke/neodev.nvim"},
 	--colorscheme
-	{"folke/tokyonight.nvim"},
+	{"folke/tokyonight.nvim",lazy =false,priority = 1000},
 	-- motion
 	{
 		"phaazon/hop.nvim",
