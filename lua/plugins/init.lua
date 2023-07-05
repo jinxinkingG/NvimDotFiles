@@ -11,6 +11,7 @@ return require("lazy").setup({
 			require("which-key").setup(require("configs.whichkey"))
 		end
 	},
+	-- telescope
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.2",
@@ -25,6 +26,7 @@ return require("lazy").setup({
 	{"folke/neodev.nvim"},
 	--colorscheme
 	{"folke/tokyonight.nvim",lazy =false,priority = 1000},
+	{"EdenEast/nightfox.nvim",lazy =false,priority = 1000},
 	-- motion
 	{
 		"phaazon/hop.nvim",
@@ -32,5 +34,24 @@ return require("lazy").setup({
 		config=function()
 			require("hop").setup()
 		end
+	},
+	-- nvim-tree
+	{
+		"nvim-tree/nvim-tree.lua",
+		dependencies = { "nvim-tree/nvim-web-devicons"},
+		event = "VeryLazy",
+		config=function()
+			require("nvim-tree").setup()
+		end
+	},
+	-- dashboard
+	{
+		"glepnir/dashboard-nvim",
+		event="VimEnter",
+		config=function()
+			require("dashboard").setup(require('configs.dashboard'))
+		end,
+		dependencies = { {"nvim-tree/nvim-web-devicons"}}
 	}
+
 })

@@ -25,6 +25,7 @@ return {
     -- override the label used to display some keys. It doesn't effect WK in any other way.
     -- For example:
     -- ["<space>"] = "SPC",
+   ["<leader>"] = "SPC"
     -- ["<cr>"] = "RET",
     -- ["<tab>"] = "TAB",
   },
