@@ -1,4 +1,12 @@
 return require("lazy").setup({
+	-- nvim-treesitter
+	{
+		"nvim-treesitter/nvim-treesitter",
+		cmd = "TSUpdate",
+		config =function()
+			require("which-key").setup(require("configs.nvim-treesitter"))
+		end
+	},
 	-- mappings
 	{
 		"folke/which-key.nvim",
