@@ -1,26 +1,40 @@
 return require("lazy").setup({
+	--nvim-lspconfig
+	{
+		"neovim/nvim-lspconfig",
+		config = function()
+			require'lspconfig'.lua_ls.setup {
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
+		end
+	},
 	-- nvim-treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
-		 cmd = {
-   			 "TSBufDisable",
-   			 "TSBufEnable",
-   			 "TSBufToggle",
-   			 "TSDisable",
-   			 "TSEnable",
-   			 "TSToggle",
-   			 "TSInstall",
-   			 "TSInstallInfo",
-   			 "TSInstallSync",
-   			 "TSModuleInfo",
-   			 "TSUninstall",
-   			 "TSUpdate",
-   			 "TSUpdateSync",
-  		},		
+		build = ":TSUpdate",
   		config =function()
 			require("nvim-treesitter.configs").setup{
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = {"c", "lua", "json", "sql"},
+  ensure_installed = { "lua", "json"},
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = true,
