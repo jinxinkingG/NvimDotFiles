@@ -22,6 +22,8 @@ return{
 		shortcut = {
 			{desc=' Plugins Update', group ='@property',key = 'u',action ='Lazy update'},
 			{desc=' Create New File', group ='@property',key = 'e',action ='e Untitle'},
+			{desc='🔭 Find Files', group ='@property',key = 'f',action ='Telescope find_files'},
+			{desc='  Quit', group ='@property',key = 'q',action ='q!'},
 		},
 		packages = { enable = true },
 		project = { enable = false },
