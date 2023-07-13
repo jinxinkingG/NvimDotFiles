@@ -8,10 +8,11 @@ j={k={"<esc>","exit insert mode"}}
 },{ slient = true, nowait = true, mode = "i"});
 wk.register({
 ["<leader>"]={
-	q={":q!<CR>","exit"},
-	w={":wq!<CR>","save and exit"}
+	q={":qa<CR>","exit"},
+	w={":w<CR>","save"}
 }
 },{ slient = true, nowait = true, mode = "n"});
+wk.register({q = {"<esc>","exit visual mode"}},{mode = "v",nowait = true})
 
 -- nvim-tree key mappings
 wk.register({
