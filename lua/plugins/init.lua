@@ -1,4 +1,26 @@
 return require("lazy").setup({
+	-- indent-blackline
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		config=function()
+			vim.opt.list = true
+			vim.opt.listchars:append "space:⋅"
+			vim.opt.listchars:append "eol:↴"
+			require("indent_blankline").setup{
+				show_current_context = true,
+				show_current_context_start = true,
+				show_end_line = true
+			}
+		end
+	},
+	-- lualine
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { {"nvim-tree/nvim-web-devicons"}},
+		config=function()
+		require('lualine').setup()
+	end
+	},
 	-- dashboard
 	{
 		"glepnir/dashboard-nvim",
@@ -14,7 +36,7 @@ return require("lazy").setup({
 		version = "*",
 		dependencies = "nvim-tree/nvim-web-devicons",
 		config=function()
-			require("bufferline").setup{}
+			require("configs.bufferline")
 		end
 	},
 	-- nvim-lspconfig
@@ -93,20 +115,20 @@ return require("lazy").setup({
 			require("nvim-tree").setup()
 		end
 	},
-	-- neo-tree
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch="v2.x",
-		event="VimEnter",
-		enabled=false,
-		config=function()
-			require('configs.neotree')
-		end,
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-			"nvim-lua/plenary.nvim",
-			"MunifTanjim/nui.nvim"
-		}
-	}
+--	-- neo-tree
+--	{
+--		"nvim-neo-tree/neo-tree.nvim",
+--		branch="v2.x",
+--		event="VimEnter",
+--		enabled=false,
+--		config=function()
+--			require('configs.neotree')
+--		end,
+--		dependencies = {
+--			"nvim-tree/nvim-web-devicons",
+--			"nvim-lua/plenary.nvim",
+--			"MunifTanjim/nui.nvim"
+--		}
+--	}
 
 })

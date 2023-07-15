@@ -49,13 +49,16 @@ wk.register({
 			e = { "<cmd>NvimTreeToggle<cr>","Open Or Close NvimTree"},
 			f = { "<cmd>NvimTreeFocus<cr>","NvimTree Focus"},
 			s = { "<cmd>NvimTreeFindFile<cr>","Opened File Focus in NvimTree"},
-		},
-		--bufferline key mappings
-		b ={
-			name = "BufferLine",
-			b = {"<cmd>BufferlinePick<CR>","Pick a tab"},
-			c = {"<cmd>BufferlinePickClose<CR>","Pick a tab and Close"},
 		}
+
+	},
+	["<Alt>"]={
+		--bufferline key mappings
+			b = {"<cmd>BufferLinePick<CR>","Pick a tab"},
+			c = {"<cmd>BufferLinePickClose<CR>","Pick a tab and Close"},
+			q = {"<cmd>BufferLineCyclePre<CR>","Pick previous tab"},
+			e = {"<cmd>BufferLineCyclePre<CR>","Pick next tab"}
+
 	}
 },n_opts)
 
