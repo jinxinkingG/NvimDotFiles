@@ -1,4 +1,32 @@
 return require("lazy").setup({
+	--luasnip
+	{
+		"L3MON4D3/LuaSnip",
+    		build = vim.fn.has "win32" == 0
+        		and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build\n'; make install_jsregexp"
+      		or nil,
+    		dependencies = { "rafamadriz/friendly-snippets" },
+    		opts = { store_selection_keys = "<C-x>" },	},
+		config = require "configs.luasnip",
+	--nvim-cmp
+	{
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
+		dependencies = {
+		"saadparwaiz1/cmp_luasnip",
+		"hrsh7th/cmp-buffer",
+		"hrsh7th/cmp-path",
+		"hrsh7th/cmp-nvim-lsp",
+		},
+		opts = function()
+			require('configs.nvim-cmp')
+		end
+
+	},
+	{
+		"hrsh7th/cmp-cmdline",
+		event = "VeryLazy",
+	},
 	-- indent-blackline
 	{
 		"lukas-reineke/indent-blankline.nvim",
@@ -26,7 +54,7 @@ return require("lazy").setup({
 		"glepnir/dashboard-nvim",
 		event="VimEnter",
 		config=function()
-			require("dashboard").setup(require('configs.dashboard'))
+			require('configs.dashboard')
 		end,
 		dependencies = { {"nvim-tree/nvim-web-devicons"}}
 	},
@@ -78,7 +106,7 @@ return require("lazy").setup({
 			vim.o.timeoutlen = 300
 		end,
 		config = function()
-			require("which-key").setup(require("configs.whichkey"))
+			require("configs.whichkey")
 		end
 	},
 	-- telescope
@@ -88,7 +116,7 @@ return require("lazy").setup({
 		cmd = "Telescope",
 		dependencies = { "nvim-lua/plenary.nvim"},
 		config=function()
-			require("telescope").setup(require("configs.telescope"))
+			require("configs.telescope")
 		end
 	},
   	--neoconf

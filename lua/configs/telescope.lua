@@ -1,4 +1,4 @@
-return {
+require("telescope").setup({
 	defaults = {
 	mappings={
 		n = {
@@ -6,4 +6,4 @@ return {
 	}
   	}
   }
-  }
+  })

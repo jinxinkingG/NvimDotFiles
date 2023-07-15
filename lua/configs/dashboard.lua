@@ -1,4 +1,4 @@
-return{
+require("dashboard").setup({
 
 	theme = 'hyper', --  theme is doom and hyper default is hyper
 	disable_move=false,   --  default is false disable move keymap for hyper
@@ -44,7 +44,7 @@ return{
 	--  file_height   -- preview file height
 	--  file_width    -- preview file width
 	--}
-}
+})
 -- DOOM theme
 --	return {
 --	  theme = 'doom',
