@@ -6,9 +6,18 @@ return require("lazy").setup({
         		and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build\n'; make install_jsregexp"
       		or nil,
     		dependencies = { "rafamadriz/friendly-snippets" },
-    		opts = { store_selection_keys = "<C-x>" },	},
+    		opts = { store_selection_keys = "<C-x>" },
 		config = require "configs.luasnip",
-	--nvim-cmp
+	},
+	{
+		"doxnit/cmp-luasnip-choice",
+		config = function()
+			require('cmp_luasnip_choice').setup({
+				auto_open = true,
+			})
+		end,
+	},
+	-- nvim-cmp
 	{
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
@@ -16,7 +25,9 @@ return require("lazy").setup({
 		"saadparwaiz1/cmp_luasnip",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
+		"hrsh7th/cmp-git",
 		"hrsh7th/cmp-nvim-lsp",
+		"dcampos/cmp-snippy"
 		},
 		opts = function()
 			require('configs.nvim-cmp')

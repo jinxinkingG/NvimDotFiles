@@ -1,5 +1,7 @@
 -- change font
 vim.cmd[[set guifont=MesloLGL\ Nerd\ Font\ Mono:h16]]
+-- set relativenumber
+vim.wo.relativenumber = true
 
 -- random theme
 switch()
