@@ -1,4 +1,10 @@
 return require("lazy").setup({
+	-- nvim notify
+	{
+		"rcarriga/nvim-notify",
+		lazy = false,
+		config = require("configs.notify")
+	},
 	--luasnip
 	{
 		"L3MON4D3/LuaSnip",
@@ -63,10 +69,18 @@ return require("lazy").setup({
 	-- dashboard
 	{
 		"glepnir/dashboard-nvim",
+		enabled=false,
 		event="VimEnter",
 		config=function()
 			require('configs.dashboard')
 		end,
+		dependencies = { {"nvim-tree/nvim-web-devicons"}}
+	},
+	{
+		"goolord/alpha-nvim",
+		event="VimEnter",
+		opts=require('configs.dashboard-alpha'),
+		config=require('configs.dashboard-alpha-config'),
 		dependencies = { {"nvim-tree/nvim-web-devicons"}}
 	},
 	-- bufferline.nvim
@@ -131,7 +145,13 @@ return require("lazy").setup({
 		end
 	},
   	--neoconf
-	{ "folke/neoconf.nvim", cmd = "Neoconf" },
+	{
+		"folke/neoconf.nvim",
+		cmd = "Neoconf",
+		config=function()
+			require("neoconf").setup()
+		end
+		},
   	--neodev
 	{"folke/neodev.nvim"},
 	--colorscheme

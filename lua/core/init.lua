@@ -23,3 +23,4 @@ end
 vim.opt.rtp:prepend(lazypath)
 --load global funtions
 require("core.functions")
+require("core.neovide")
