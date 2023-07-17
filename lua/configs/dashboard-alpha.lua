@@ -21,7 +21,7 @@ return function()
 	dashboard.config.layout[3].val = 5
 else
 	dashboard.config.layout[1].val = vim.fn.max { 2, vim.fn.floor(vim.fn.winheight(0) * 0.28) }
-	dashboard.config.layout[3].val = 3
+	dashboard.config.layout[3].val = 2
 end
 else
 	if vim.fn.has "mac" then

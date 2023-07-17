@@ -10,8 +10,8 @@ wk.register({
 ["<leader>"]={
 	w={":w<CR>","save"},
 	m={":Mason<CR>","Mason"},
-},q={
-	q={":q<CR>","exit"},
+	q={":q!<CR>","exit"},
+	Q={":q<CR>","exit"},
 }
 },{ slient = true, nowait = true, mode = "n"});
 wk.register({q = {"<esc>","exit visual mode"}},{mode = "v",nowait = true})
@@ -39,7 +39,7 @@ local i_opts = {
   silent = true, -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
   nowait = false, -- use `nowait` when creating keymaps
-  expr = false, -- use `expr` when creating keymaps		
+  expr = false, -- use `expr` when creating keymaps
 }
 
 wk.register({
@@ -51,37 +51,31 @@ wk.register({
 			f = { "<cmd>NvimTreeFocus<cr>","NvimTree Focus"},
 			s = { "<cmd>NvimTreeFindFile<cr>","Opened File Focus in NvimTree"},
 		},
-		q = {"<cmd>BufferLineCyclePre<CR>","Pick previous tab"},
-		e = {"<cmd>BufferLineCycleNext<CR>","Pick previous tab"},
-		b ={
-		--bufferline key mappings
-			b = {"<cmd>BufferLinePick<CR>","Pick a tab"},
-			c = {"<cmd>BufferLinePickClose<CR>","Pick a tab and Close"},
-		},
-	},
-
-},n_opts)
-
--- hop key mappings
-wk.register({
-	["<leader>"]={
+		-- hop key mappings
 		h ={
 			name = "Hop",
 			l = { "<cmd>HopLine<cr>","Hop Line"},
 			w = { "<cmd>HopWord<cr>","Hop Word"},
 			a = { "<cmd>HopAnywhere<cr>","Hop Anywhere"},
-		}
-	}
-},n_opts)
-
-
--- telescope key mappings
-wk.register({
-	["<leader>"]={
+		},
+		b ={
+		--bufferline key mappings
+			name = "bufferline",
+			b = {"<cmd>BufferLinePick<CR>","Pick a tab"},
+			c = {"<cmd>BufferLinePickClose<CR>","Pick a tab and Close"},
+		},
+		-- telescope key mappings
 		t ={
 			name = "Telescope",
 			f = { "<cmd>Telescope find_files<cr>","Find files"},
 			w = { "<cmd>Telescope live_grep<cr>","Find word"},
+			r = { "<cmd>Telescope oldfiles<cr>","Find word"},
 		}
-	}
+	},
+	[","]={
+		name = 'Tab Action',
+		q = {"<cmd>BufferLineCyclePre<CR>","Pick previous tab"},
+		e = {"<cmd>BufferLineCycleNext<CR>","Pick next tab"},
+		w = {"<cmd>bdelete<CR><cmd>BufferLineCyclePre<CR>","Close current tab"}
+		}
 },n_opts)

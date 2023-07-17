@@ -1,4 +1,12 @@
 return require("lazy").setup({
+	--nvim autopairs
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config =function()
+			require("configs.nvim-autopairs")
+		end
+	},
 	-- nvim notify
 	{
 		"rcarriga/nvim-notify",
@@ -8,6 +16,7 @@ return require("lazy").setup({
 	--luasnip
 	{
 		"L3MON4D3/LuaSnip",
+		event = "InsertEnter",
     		build = vim.fn.has "win32" == 0
         		and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build\n'; make install_jsregexp"
       		or nil,
@@ -17,6 +26,7 @@ return require("lazy").setup({
 	},
 	{
 		"doxnit/cmp-luasnip-choice",
+		event = "InsertEnter",
 		config = function()
 			require('cmp_luasnip_choice').setup({
 				auto_open = true,
@@ -42,11 +52,12 @@ return require("lazy").setup({
 	},
 	{
 		"hrsh7th/cmp-cmdline",
-		event = "VeryLazy",
+		event = "VeryLazy"
 	},
 	-- indent-blackline
 	{
 		"lukas-reineke/indent-blankline.nvim",
+		event = "BufEnter",
 		config=function()
 			vim.opt.list = true
 			vim.opt.listchars:append "space:⋅"
@@ -61,9 +72,10 @@ return require("lazy").setup({
 	-- lualine
 	{
 		"nvim-lualine/lualine.nvim",
+		event = "BufEnter",
 		dependencies = { {"nvim-tree/nvim-web-devicons"}},
 		config=function()
-		require('lualine').setup()
+		require('configs.lualine')
 	end
 	},
 	-- dashboard
@@ -86,6 +98,7 @@ return require("lazy").setup({
 	-- bufferline.nvim
 	{
 		"akinsho/bufferline.nvim",
+		event = "BufEnter",
 		version = "*",
 		dependencies = "nvim-tree/nvim-web-devicons",
 		config=function()
@@ -95,9 +108,7 @@ return require("lazy").setup({
 	-- nvim-lspconfig
 	{
 		"neonvim/nvim-lspconfig",
-		config=function()
-			require("configs.lsp")
-		end
+		event = "InsertEnter"
 	},
 	-- mason.nvim
 	{
@@ -110,13 +121,15 @@ return require("lazy").setup({
 	-- mason-lspconfig.nvim
 	{
 		"williamboman/mason-lspconfig.nvim",
+		event = "BufEnter",
 		config=function()
-			require("mason-lspconfig").setup()
+			require("configs.mason-lspconfig")
 		end
 	},
 	-- nvim-treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
+		event = "BufEnter",
 		build = ":TSUpdate",
   		config =function()
 			require("configs.treesitter")
@@ -125,7 +138,7 @@ return require("lazy").setup({
 	-- mappings
 	{
 		"folke/which-key.nvim",
-		event = "VeryLazy",
+		lazy = true,
 		init = function()
 			vim.o.timeout = true
 			vim.o.timeoutlen = 300
@@ -160,7 +173,7 @@ return require("lazy").setup({
 	-- motion
 	{
 		"phaazon/hop.nvim",
-		event = "VeryLazy",
+		lazy = true,
 		config=function()
 			require("hop").setup()
 		end
@@ -169,7 +182,7 @@ return require("lazy").setup({
 	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = { "nvim-tree/nvim-web-devicons"},
-		event = "VeryLazy",
+		lazy = true,
 		config=function()
 			require("nvim-tree").setup()
 		end
