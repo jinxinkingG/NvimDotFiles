@@ -14,7 +14,11 @@ vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true}
 vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true})
 
 -- change font
+if vim.g.neovide and vim.fn.has "mac" then
+vim.o.guifont ="MesloLGL Nerd Font Mono:h18"
+else
 vim.o.guifont ="MesloLGL Nerd Font Mono:h14"
+end
 -- set relativenumber
 vim.wo.relativenumber = true
 

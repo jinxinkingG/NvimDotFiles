@@ -1,0 +1,13 @@
+{
+    "workspace.library": [
+        "/Users/jinxin/.config/nvim",
+        "/Users/jinxin/.local/share/nvim/lazy/lazy.nvim",
+        "/Users/jinxin/.local/share/nvim/lazy/nvim-lspconfig",
+        "/Users/jinxin/.local/share/nvim/lazy/tokyonight.nvim",
+        "/Users/jinxin/.local/share/nvim/lazy/nightfox.nvim",
+        "/usr/local/share/nvim/runtime",
+        "/usr/local/lib/nvim",
+        "/Users/jinxin/.local/state/nvim/lazy/readme",
+        "${3rd}/luassert/library"
+    ]
+}

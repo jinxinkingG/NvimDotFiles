@@ -69,6 +69,10 @@ return require("lazy").setup({
 			}
 		end
 	},
+	-- nvim-web-devicons
+	{
+		"nvim-tree/nvim-web-devicons"
+	},
 	-- lualine
 	{
 		"nvim-lualine/lualine.nvim",
@@ -98,7 +102,6 @@ return require("lazy").setup({
 	-- bufferline.nvim
 	{
 		"akinsho/bufferline.nvim",
-		event = "BufEnter",
 		version = "*",
 		dependencies = "nvim-tree/nvim-web-devicons",
 		config=function()
@@ -173,7 +176,7 @@ return require("lazy").setup({
 	-- motion
 	{
 		"phaazon/hop.nvim",
-		lazy = true,
+		event = 'BufEnter',
 		config=function()
 			require("hop").setup()
 		end
@@ -182,7 +185,7 @@ return require("lazy").setup({
 	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = { "nvim-tree/nvim-web-devicons"},
-		lazy = true,
+		event = 'BufEnter',
 		config=function()
 			require("nvim-tree").setup()
 		end
