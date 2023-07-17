@@ -8,10 +8,10 @@ j={k={"<esc>","exit insert mode"}}
 },{ slient = true, nowait = true, mode = "i"});
 wk.register({
 ["<leader>"]={
-	q={":q<CR>","exit"},
-	w={":w<CR>","save"},
-	m={":Mason<CR>","Mason"}
-}
+	w={":w","save"},
+	m={":Mason<CR>","Mason"},
+	["<A-q>"]={":q<CR>","exit"},
+},
 },{ slient = true, nowait = true, mode = "n"});
 wk.register({q = {"<esc>","exit visual mode"}},{mode = "v",nowait = true})
 
@@ -44,20 +44,19 @@ local i_opts = {
 wk.register({
 	["<leader>"]={
 		-- nvim-tree key mappings
-		e ={
+		f ={
 			name = "Nvim-Tree",
 			e = { "<cmd>NvimTreeToggle<cr>","Open Or Close NvimTree"},
 			f = { "<cmd>NvimTreeFocus<cr>","NvimTree Focus"},
 			s = { "<cmd>NvimTreeFindFile<cr>","Opened File Focus in NvimTree"},
 		},
-		b={
+		q = {"<cmd>BufferLineCyclePre<CR>","Pick previous tab"},
+		e = {"<cmd>BufferLineCycleNext<CR>","Pick previous tab"},
+		b ={
 		--bufferline key mappings
 			b = {"<cmd>BufferLinePick<CR>","Pick a tab"},
 			c = {"<cmd>BufferLinePickClose<CR>","Pick a tab and Close"},
-			q = {"<cmd>BufferLineCyclePre<CR>","Pick previous tab"},
-			e = {"<cmd>BufferLineCyclePre<CR>","Pick next tab"}
-		}
-
+		},
 	},
 
 },n_opts)

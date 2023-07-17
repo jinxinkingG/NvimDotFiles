@@ -1,6 +1,6 @@
 return function()
-	local dashboard = require "alpha.themes.dashboard"
-	dashboard.section.header.val ={
+	local startify= require "alpha.themes.startify"
+	startify.section.header.val ={
    		  '███████╗██╗      █████╗ ███████╗██╗  ██╗    ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ',
    		  '██╔════╝██║     ██╔══██╗██╔════╝██║  ██║    ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ',
    		  '█████╗  ██║     ███████║███████╗███████║    ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ',
@@ -8,20 +8,31 @@ return function()
    		  '██║     ███████╗██║  ██║███████║██║  ██║    ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ',
    		  '╚═╝     ╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝    ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ',
 	}
-	dashboard.section.buttons.val = {
-		dashboard.button("f","🔭 Find Files",":Telescop find_files <CR>"),
-		dashboard.button("r"," Recent Files",":Telescop oldfiles<CR>"),
-		dashboard.button("u",' Plugins Update', ':Lazy update<CR>'),
-		dashboard.button("e",' Create New File', ':ene <BAR>startinsert<CR>'),
-		dashboard.button("q",'  Quit',':q!<CR>'),
+	startify.section.top_buttons.val = {
+		startify.button("f","🔭 Find Files",":Telescop find_files <CR>"),
+		startify.button("u",' Plugins Update', ':Lazy update<CR>'),
+		startify.button("e",' Create New File', ':ene <BAR> startinsert <CR>'),
+		startify.button("q",'  Quit',':q!<CR>'),
 	}
-	if vim.g.neovide then
-	dashboard.config.layout[1].val = vim.fn.max { 2, vim.fn.floor(vim.fn.winheight(0) * 0.28) }
-	dashboard.config.layout[3].val = 3
-else
-	dashboard.config.layout[1].val = vim.fn.max { 2, vim.fn.floor(vim.fn.winheight(0) * 0.1) }
-	dashboard.config.layout[3].val = 2
-end
-	dashboard.config.opts.noautocmd = true
-	return dashboard
+	startify.section.mru.val={
+	{
+		type = "padding",
+		val = 10
+	}
+	}
+	require("alpha").setup(startify.config)
+
+	vim.api.nvim_create_autocmd("User", {
+		pattern = "LazyVimStarted",
+		desc = "Add Alpha dashboard footer",
+		once = true,
+		callback = function()
+			local stats = require("lazy").stats()
+			local ms = math.floor(stats.startuptime * 100 + 0.5) / 100
+			local footer = "AstroNvim loaded " .. stats.count .. " plugins  in " .. ms .. "ms"
+			opts.section.footer.val = { type = "text", val = footer}
+			--opts.section.footer.opts.hl = "DashboardFooter"
+			pcall(vim.cmd.AlphaRedraw)
+		end
+	})
 end

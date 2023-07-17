@@ -80,7 +80,7 @@ return require("lazy").setup({
 		"goolord/alpha-nvim",
 		event="VimEnter",
 		opts=require('configs.dashboard-alpha'),
-		config=require('configs.dashboard-alpha-config'),
+		config=require('configs.alpha-config'),
 		dependencies = { {"nvim-tree/nvim-web-devicons"}}
 	},
 	-- bufferline.nvim
