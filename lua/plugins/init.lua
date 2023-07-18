@@ -1,7 +1,8 @@
 return require("lazy").setup({
 	--SchemaStore.nvim
 	{
-		"b0o/schemastore.nvim"
+		"b0o/schemastore.nvim",
+		lazy = true
 	},
 	--trouble nvim
 	{
@@ -29,7 +30,6 @@ return require("lazy").setup({
 	-- nvim notify
 	{
 		"rcarriga/nvim-notify",
-		lazy = false,
 		config = require("configs.notify")
 	},
 	--luasnip
@@ -198,7 +198,7 @@ return require("lazy").setup({
 		end
 		},
   	--neodev
-	{"folke/neodev.nvim"},
+	{"folke/neodev.nvim",enabled = false},
 	--colorscheme
 	{"folke/tokyonight.nvim",lazy =false,priority = 1000},
 	{"EdenEast/nightfox.nvim",lazy =false,priority = 1000},
