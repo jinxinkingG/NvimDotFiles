@@ -16,21 +16,11 @@ return function()
 		dashboard.button("q",'  Quit',':q!<CR>'),
 	}
 	if vim.g.neovide then
-		if vim.fn.has "mac" then
-	dashboard.config.layout[1].val = vim.fn.max { 2, vim.fn.floor(vim.fn.winheight(0) * 0.28) }
-	dashboard.config.layout[3].val = 5
-else
-	dashboard.config.layout[1].val = vim.fn.max { 2, vim.fn.floor(vim.fn.winheight(0) * 0.28) }
+	dashboard.config.layout[1].val = vim.fn.max { 2, vim.fn.floor(vim.fn.winheight(0) * 0.35) }
 	dashboard.config.layout[3].val = 2
-end
-else
-	if vim.fn.has "mac" then
-	dashboard.config.layout[1].val = vim.fn.max { 2, vim.fn.floor(vim.fn.winheight(0) * 0.15) }
-	dashboard.config.layout[3].val = 4
 else
 	dashboard.config.layout[1].val = vim.fn.max { 2, vim.fn.floor(vim.fn.winheight(0) * 0.1) }
 	dashboard.config.layout[3].val = 2
-end
 end
 	dashboard.config.opts.noautocmd = true
 	return dashboard
