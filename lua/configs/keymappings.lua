@@ -10,8 +10,8 @@ wk.register({
 ["<leader>"]={
 	w={":w<CR>","save"},
 	m={":Mason<CR>","Mason"},
-	q={":q!<CR>","exit"},
-	Q={":q<CR>","exit"},
+	q={":q<CR>","exit"},
+	Q={":q!<CR>","exit"},
 }
 },{ slient = true, nowait = true, mode = "n"});
 wk.register({q = {"<esc>","exit visual mode"}},{mode = "v",nowait = true})
