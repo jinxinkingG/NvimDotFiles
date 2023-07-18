@@ -11,5 +11,6 @@
         "after_each",
         "packer_plugins",
         "___bufferline_private"
-    ]
+    ],
+    "workspace.checkThirdParty": false
 }

@@ -52,12 +52,12 @@ return require("lazy").setup({
 	},
 	{
 		"hrsh7th/cmp-cmdline",
-		event = "VeryLazy"
+		event = "CmdlineEnter"
 	},
 	-- indent-blackline
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = "BufEnter",
+		event = "BufRead",
 		config=function()
 			vim.opt.list = true
 			vim.opt.listchars:append "space:⋅"
@@ -76,7 +76,7 @@ return require("lazy").setup({
 	-- lualine
 	{
 		"nvim-lualine/lualine.nvim",
-		event = "BufEnter",
+		event = "BufRead",
 		dependencies = { {"nvim-tree/nvim-web-devicons"}},
 		config=function()
 		require('configs.lualine')
@@ -102,6 +102,7 @@ return require("lazy").setup({
 	-- bufferline.nvim
 	{
 		"akinsho/bufferline.nvim",
+		event = "BufAdd",
 		version = "*",
 		dependencies = "nvim-tree/nvim-web-devicons",
 		config=function()
@@ -111,12 +112,21 @@ return require("lazy").setup({
 	-- nvim-lspconfig
 	{
 		"neonvim/nvim-lspconfig",
-		event = "InsertEnter"
+		lazy = true
 	},
 	-- mason.nvim
 	{
 		"williamboman/mason.nvim",
 		build = ":MasonUpdate", -- :MasonUpate updates registry contents
+	    	cmd = {
+      			"Mason",
+      			"MasonInstall",
+      			"MasonUninstall",
+      			"MasonUninstallAll",
+      			"MasonLog",
+      			"MasonUpdate",
+      			"MasonUpdateAll",
+    		},
 		config=function()
 			require("mason").setup()
 		end
@@ -124,7 +134,7 @@ return require("lazy").setup({
 	-- mason-lspconfig.nvim
 	{
 		"williamboman/mason-lspconfig.nvim",
-		event = "BufEnter",
+		event = "BufRead",
 		config=function()
 			require("configs.mason-lspconfig")
 		end
@@ -132,7 +142,7 @@ return require("lazy").setup({
 	-- nvim-treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
-		event = "BufEnter",
+		event = "BufRead",
 		build = ":TSUpdate",
   		config =function()
 			require("configs.treesitter")
@@ -176,7 +186,7 @@ return require("lazy").setup({
 	-- motion
 	{
 		"phaazon/hop.nvim",
-		event = 'BufEnter',
+		event = 'BufRead',
 		config=function()
 			require("hop").setup()
 		end
@@ -185,7 +195,7 @@ return require("lazy").setup({
 	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = { "nvim-tree/nvim-web-devicons"},
-		event = 'BufEnter',
+		event = 'BufRead',
 		config=function()
 			require("nvim-tree").setup()
 		end

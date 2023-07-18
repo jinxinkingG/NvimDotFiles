@@ -1,3 +1,5 @@
+--close nvim statusline
+vim.opt.laststatus=0
 if vim.g.neovide and vim.fn.has "mac" == 1 then
   vim.keymap.set('n', '<D-s>', ':w<CR>') -- Save
   vim.keymap.set('v', '<D-c>', '"+y') -- Copy
