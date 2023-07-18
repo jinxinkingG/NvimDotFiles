@@ -69,13 +69,13 @@ wk.register({
 			name = "Telescope",
 			f = { "<cmd>Telescope find_files<cr>","Find files"},
 			w = { "<cmd>Telescope live_grep<cr>","Find word"},
-			r = { "<cmd>Telescope oldfiles<cr>","Find word"},
+			r = { "<cmd>Telescope oldfiles<cr>","Recent files"},
 		}
 	},
 	[","]={
 		name = 'Tab Action',
 		q = {"<cmd>BufferLineCyclePre<CR>","Pick previous tab"},
 		e = {"<cmd>BufferLineCycleNext<CR>","Pick next tab"},
-		w = {"<cmd>bdelete<CR><cmd>BufferLineCyclePre<CR>","Close current tab"}
+		w = {"<cmd>bdelete<CR>|<cmd>buffer<CR>","Close current tab"}
 		}
 },n_opts)
