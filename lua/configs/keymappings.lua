@@ -52,7 +52,7 @@ wk.register({
 			s = { "<cmd>NvimTreeFindFile<cr>","Opened File Focus in NvimTree"},
 		},
 		-- hop key mappings
-		t ={
+		h ={
 			name = "Hop",
 			l = { "<cmd>HopLine<cr>","Hop Line"},
 			w = { "<cmd>HopWord<cr>","Hop Word"},
@@ -70,6 +70,11 @@ wk.register({
 			f = { "<cmd>Telescope find_files<cr>","Find files"},
 			w = { "<cmd>Telescope live_grep<cr>","Find word"},
 			r = { "<cmd>Telescope oldfiles<cr>","Recent files"},
+		},
+		t = {
+			name = "Trouble",
+			t = {"<cmd>TroubleToggle<CR>","Toggle Trouble"},
+			r = {"<cmd>TroubleRefresh<CR>","Refresh Trouble"}
 		}
 	},
 	[","]={
