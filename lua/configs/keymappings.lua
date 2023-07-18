@@ -45,14 +45,14 @@ local i_opts = {
 wk.register({
 	["<leader>"]={
 		-- nvim-tree key mappings
-		f ={
+		e ={
 			name = "Nvim-Tree",
 			e = { "<cmd>NvimTreeToggle<cr>","Open Or Close NvimTree"},
 			f = { "<cmd>NvimTreeFocus<cr>","NvimTree Focus"},
 			s = { "<cmd>NvimTreeFindFile<cr>","Opened File Focus in NvimTree"},
 		},
 		-- hop key mappings
-		h ={
+		t ={
 			name = "Hop",
 			l = { "<cmd>HopLine<cr>","Hop Line"},
 			w = { "<cmd>HopWord<cr>","Hop Word"},
@@ -65,7 +65,7 @@ wk.register({
 			c = {"<cmd>BufferLinePickClose<CR>","Pick a tab and Close"},
 		},
 		-- telescope key mappings
-		t ={
+		f ={
 			name = "Telescope",
 			f = { "<cmd>Telescope find_files<cr>","Find files"},
 			w = { "<cmd>Telescope live_grep<cr>","Find word"},
