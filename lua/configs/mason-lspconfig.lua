@@ -8,14 +8,6 @@ require("mason-lspconfig").setup_handlers {
             lspconfig[server_name].setup {}
         end,
 	-- java-language-server
-	["java_language_server"] = function()
-		lspconfig.java_language_server.setup{
-			cmd = {'/Users/jinxin/.local/share/nvim/mason/packages/java-language-server/dist/lang_server_mac.sh'},
-			single_file_support = true,
-			settings = {},
-			filetypes = {"java"}
-		}
-	end,
         -- Next, you can provide a dedicated handler for specific servers.
         -- For example, a handler override for the `rust_analyzer`:
         ["lua_ls"] = function ()
