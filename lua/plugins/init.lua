@@ -1,4 +1,19 @@
 return require("lazy").setup({
+	--trouble nvim
+	{
+		"folke/trouble.nvim",
+		event = "BufRead",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = require("configs.trouble")
+	},
+	--null-ls.nvim
+	{
+		"jose-elias-alvarez/null-ls.nvim",
+		event = "BufRead",
+		config = function ()
+			require("configs.null-ls")
+		end
+	},
 	--nvim autopairs
 	{
 		"windwp/nvim-autopairs",
