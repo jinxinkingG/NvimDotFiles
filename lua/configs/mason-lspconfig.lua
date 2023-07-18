@@ -8,12 +8,14 @@ require("mason-lspconfig").setup_handlers {
             lspconfig[server_name].setup {}
         end,
 	-- java-language-server
-	["java_language_server"] = function()
-		lspconfig.java_language_server.setup{
-			cmd = {'/Users/jinxin/.local/share/nvim/mason/packages/java-language-server/dist/lang_server_mac.sh'},
-			single_file_support = true,
-			settings = {},
-			filetypes = {"java"}
+	["jdtls"] = function()
+		local root = vim.fn.getcwd()
+		lspconfig.jdtls.setup{
+			cmd = { "jdtls", "-configuration", "/Users/jinxin/.local/share/nvim/mason/packages/jdtls/config_mac", "-data", "/Users/jinxin/.local/share/nvim/mason/packages/jdtls/workspace" },
+			init_options = {
+				  jvm_args = {},
+				  workspace = "/Users/jinxin/.local/share/nvim/mason/packages/jdtls/workspace"
+			}
 		}
 	end,
         -- Next, you can provide a dedicated handler for specific servers.
@@ -45,6 +47,7 @@ require("mason-lspconfig").setup_handlers {
 	end,
 	["jsonls"] = function()
 		lspconfig.jsonls.setup{
+			filetypes = {"json"},
 			settings = {
 				json = {
 					schemas = require('schemastore').json.schemas(),

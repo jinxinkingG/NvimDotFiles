@@ -1,4 +1,9 @@
 return require("lazy").setup({
+	--nvim-jdtls
+	{
+		"mfussenegger/nvim-jdtls",
+		lazy = true
+	},
 	--SchemaStore.nvim
 	{
 		"b0o/schemastore.nvim",
@@ -216,7 +221,7 @@ return require("lazy").setup({
 		dependencies = { "nvim-tree/nvim-web-devicons"},
 		event = 'BufRead',
 		config=function()
-			require("nvim-tree").setup()
+			require("configs.nvim-tree")
 		end
 	},
 --	-- neo-tree

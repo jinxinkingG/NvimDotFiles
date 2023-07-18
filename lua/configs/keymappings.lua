@@ -49,7 +49,7 @@ wk.register({
 			name = "Nvim-Tree",
 			e = { "<cmd>NvimTreeToggle<cr>","Open Or Close NvimTree"},
 			f = { "<cmd>NvimTreeFocus<cr>","NvimTree Focus"},
-			s = { "<cmd>NvimTreeFindFile<cr>","Opened File Focus in NvimTree"},
+			s = { "<cmd>NvimTreeFindFile!<cr>","Opened File Focus in NvimTree"},
 		},
 		-- hop key mappings
 		h ={
