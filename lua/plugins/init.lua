@@ -4,6 +4,12 @@ return require("lazy").setup({
 		"mfussenegger/nvim-jdtls",
 		lazy = true
 	},
+	-- icons for lsp
+	{
+		"onsails/lspkind.nvim",
+		event = "InsertEnter",
+		config = require "configs.lspkind"
+	},
 	--SchemaStore.nvim
 	{
 		"b0o/schemastore.nvim",
@@ -35,6 +41,10 @@ return require("lazy").setup({
 	-- nvim notify
 	{
 		"rcarriga/nvim-notify",
+		opts = {
+			fps = 60,
+			timeout = 3000
+		},
 		config = require("configs.notify")
 	},
 	--luasnip
@@ -203,7 +213,12 @@ return require("lazy").setup({
 		end
 		},
   	--neodev
-	{"folke/neodev.nvim",enabled = false},
+	{
+		"folke/neodev.nvim",
+		event = "InsertEnter",
+		opts = {},
+		config = require "configs.neodev"
+	},
 	--colorscheme
 	{"folke/tokyonight.nvim",lazy =false,priority = 1000},
 	{"EdenEast/nightfox.nvim",lazy =false,priority = 1000},
