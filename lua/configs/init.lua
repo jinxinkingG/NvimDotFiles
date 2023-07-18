@@ -1,6 +1,7 @@
 --close nvim statusline
 vim.opt.laststatus=0
-if vim.g.neovide and vim.fn.has "mac" == 1 then
+-- for neovide copy save etc.
+if vim.g.neovide then
   vim.keymap.set('n', '<D-s>', ':w<CR>') -- Save
   vim.keymap.set('v', '<D-c>', '"+y') -- Copy
   vim.keymap.set('n', '<D-v>', '"+P') -- Paste normal mode
@@ -16,10 +17,8 @@ vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true}
 vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true})
 
 -- change font
-if vim.g.neovide and vim.fn.has "mac" then
+if vim.g.neovide then
 vim.o.guifont ="MesloLGL Nerd Font Mono:h18"
-else
-vim.o.guifont ="MesloLGL Nerd Font Mono:h14"
 end
 -- set relativenumber
 vim.wo.relativenumber = true
