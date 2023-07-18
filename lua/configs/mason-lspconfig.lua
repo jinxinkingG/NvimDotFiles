@@ -34,5 +34,15 @@ require("mason-lspconfig").setup_handlers {
 		    },
 		  },
 		}
+	end,
+	["jsonls"] = function()
+		lspconfig.jsonls.setup{
+			settings = {
+				json = {
+					schemas = require('schemastore').json.schemas(),
+					validate = { enbale = true }
+				}
+			}
+		}
 	end
  }

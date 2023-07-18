@@ -6,7 +6,7 @@ vim.o.guifont ="MesloLGL Nerd Font Mono:h14"
 vim.wo.relativenumber = true
 
 -- random theme
-switch()
+SWITCH()
 
 -- nvim tree recommend configs
 	-- disable netrw at the very start of your init.lua

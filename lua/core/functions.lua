@@ -30,6 +30,6 @@ local _switch = {
 		vim.cmd[[colorscheme terafox]]
 	end
 }
-function switch()
+function SWITCH()
 	_switch[os.time()%10]()
 end
