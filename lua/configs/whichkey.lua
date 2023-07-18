@@ -87,3 +87,4 @@ require("which-key").setup({
     filetypes = {},
   },
 })
+require('configs.keymappings')
