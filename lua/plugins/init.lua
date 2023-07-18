@@ -1,4 +1,8 @@
 return require("lazy").setup({
+	--SchemaStore.nvim
+	{
+		"b0o/schemastore.nvim"
+	},
 	--trouble nvim
 	{
 		"folke/trouble.nvim",
