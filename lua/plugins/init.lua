@@ -175,7 +175,7 @@ return require("lazy").setup({
 	-- mappings
 	{
 		"folke/which-key.nvim",
-		lazy = true,
+		event = "BufRead",
 		init = function()
 			vim.o.timeout = true
 			vim.o.timeoutlen = 300

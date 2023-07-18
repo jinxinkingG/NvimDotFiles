@@ -33,5 +33,3 @@ SWITCH()
 	-- set termguicolors to enable highlight groups
 	vim.opt.termguicolors = true
 
--- keymappings
-require("configs.keymappings")
