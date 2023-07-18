@@ -1,3 +1,5 @@
+--close nvim statusline
+vim.opt.laststatus=0
 -- change font
 vim.o.guifont ="MesloLGL Nerd Font Mono:h14"
 -- set relativenumber
