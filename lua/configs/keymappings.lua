@@ -10,8 +10,8 @@ wk.register({
 ["<leader>"]={
 	w={":w<CR>","save"},
 	m={":Mason<CR>","Mason"},
-	q={":q!<CR>","exit"},
-	Q={":q<CR>","exit"},
+	q={":q<CR>","exit"},
+	Q={":q!<CR>","exit"},
 }
 },{ slient = true, nowait = true, mode = "n"});
 wk.register({q = {"<esc>","exit visual mode"}},{mode = "v",nowait = true})
@@ -45,7 +45,7 @@ local i_opts = {
 wk.register({
 	["<leader>"]={
 		-- nvim-tree key mappings
-		f ={
+		e ={
 			name = "Nvim-Tree",
 			e = { "<cmd>NvimTreeToggle<cr>","Open Or Close NvimTree"},
 			f = { "<cmd>NvimTreeFocus<cr>","NvimTree Focus"},
@@ -65,11 +65,16 @@ wk.register({
 			c = {"<cmd>BufferLinePickClose<CR>","Pick a tab and Close"},
 		},
 		-- telescope key mappings
-		t ={
+		f ={
 			name = "Telescope",
 			f = { "<cmd>Telescope find_files<cr>","Find files"},
 			w = { "<cmd>Telescope live_grep<cr>","Find word"},
 			r = { "<cmd>Telescope oldfiles<cr>","Recent files"},
+		},
+		t = {
+			name = "Trouble",
+			t = {"<cmd>TroubleToggle<CR>","Toggle Trouble"},
+			r = {"<cmd>TroubleRefresh<CR>","Refresh Trouble"}
 		}
 	},
 	[","]={

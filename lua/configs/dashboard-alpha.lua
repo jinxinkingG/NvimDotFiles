@@ -10,10 +10,10 @@ return function()
 	}
 	dashboard.section.buttons.val = {
 		dashboard.button("f","🔭 Find Files",":Telescop find_files <CR>"),
-		dashboard.button("r"," Recent Files",":Telescop oldfiles<CR>"),
-		dashboard.button("u",' Plugins Update', ':Lazy update<CR>'),
-		dashboard.button("e",' Create New File', ':ene <BAR>startinsert<CR>'),
-		dashboard.button("q",'  Quit',':q!<CR>'),
+		dashboard.button("r","  Recent Files",":Telescop oldfiles<CR>"),
+		dashboard.button("u",'  Plugins Update', ':Lazy update<CR>'),
+		dashboard.button("e",'  Create New File', ':ene <BAR>startinsert<CR>'),
+		dashboard.button("q",'   Quit',':q!<CR>'),
 	}
 	if vim.g.neovide then
 		if vim.fn.has "mac" then
