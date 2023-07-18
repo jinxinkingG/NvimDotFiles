@@ -25,3 +25,5 @@ vim.opt.rtp:prepend(lazypath)
 require("core.functions")
 --load neovide configs
 require("core.neovide")
+--load autocmd
+require("core.autocmd")

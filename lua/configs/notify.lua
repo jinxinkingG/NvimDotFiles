@@ -1,9 +1,6 @@
-return function()
+return function(_, opts)
 	vim.cmd[[set termguicolors]]
 	local notify = require "notify"
-	notify.setup(
-	{
-		fps = 60,
-	})
+	notify.setup(opts)
 	vim.notify = notify
 end
