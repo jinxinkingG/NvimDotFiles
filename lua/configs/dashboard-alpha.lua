@@ -1,4 +1,5 @@
 return function()
+	local icons = require"core.icons"
 	local dashboard = require "alpha.themes.dashboard"
 	dashboard.section.header.val ={
    		  '███████╗██╗      █████╗ ███████╗██╗  ██╗    ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ',
@@ -9,11 +10,11 @@ return function()
    		  '╚═╝     ╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝    ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ',
 	}
 	dashboard.section.buttons.val = {
-		dashboard.button("f","🔭 Find Files",":Telescop find_files <CR>"),
-		dashboard.button("r","  Recent Files",":Telescop oldfiles<CR>"),
-		dashboard.button("u",'  Plugins Update', ':Lazy update<CR>'),
-		dashboard.button("e",'  Create New File', ':ene <BAR>startinsert<CR>'),
-		dashboard.button("q",'   Quit',':q!<CR>'),
+		dashboard.button("f",icons.Search .. "  Find Files",":Telescop find_files <CR>"),
+		dashboard.button("r",icons.History .. "  Recent Files",":Telescop oldfiles<CR>"),
+		dashboard.button("u",icons.Sync .. '  Plugins Update', ':Lazy update<CR>'),
+		dashboard.button("e",icons.CreateFile .. '  Create New File', ':ene <BAR>startinsert<CR>'),
+		dashboard.button("q",icons.Exit .. '  Quit',':q!<CR>'),
 	}
 	if vim.g.neovide then
 		if vim.fn.has "mac" then
