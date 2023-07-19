@@ -1,7 +1,14 @@
 return require("lazy").setup({
+	-- icons for lsp
+	{
+		"onsails/lspkind.nvim",
+		event = "InsertEnter",
+		config = require "configs.lspkind"
+	},
 	--SchemaStore.nvim
 	{
-		"b0o/schemastore.nvim"
+		"b0o/schemastore.nvim",
+		lazy = true
 	},
 	--trouble nvim
 	{
@@ -29,7 +36,10 @@ return require("lazy").setup({
 	-- nvim notify
 	{
 		"rcarriga/nvim-notify",
-		lazy = false,
+		opts = {
+			fps = 60,
+			timeout = 3000
+		},
 		config = require("configs.notify")
 	},
 	--luasnip
@@ -170,7 +180,7 @@ return require("lazy").setup({
 	-- mappings
 	{
 		"folke/which-key.nvim",
-		lazy = true,
+		event = "BufRead",
 		init = function()
 			vim.o.timeout = true
 			vim.o.timeoutlen = 300
@@ -198,7 +208,12 @@ return require("lazy").setup({
 		end
 		},
   	--neodev
-	{"folke/neodev.nvim"},
+	{
+		"folke/neodev.nvim",
+		event = "InsertEnter",
+		opts = {},
+		config = require "configs.neodev"
+	},
 	--colorscheme
 	{"folke/tokyonight.nvim",lazy =false,priority = 1000},
 	{"EdenEast/nightfox.nvim",lazy =false,priority = 1000},

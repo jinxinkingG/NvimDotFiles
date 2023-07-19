@@ -8,7 +8,7 @@ return function(_, opts)
 		callback = function()
 			local stats = require("lazy").stats()
 			local ms = math.floor(stats.startuptime * 100 + 0.5) / 100
-			opts.section.footer.val ={ " ", "Flash Neovim loaded " .. stats.count .. " plugins  in " .. ms .. "ms" }
+			opts.section.footer.val ={ "  ", "🚀 Flash Neovim loaded " .. stats.count .. " plugins  in " .. ms .. "ms" }
 			opts.section.footer.opts.hl = "DashboardFooter"
 			pcall(vim.cmd.AlphaRedraw)
 		end

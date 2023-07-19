@@ -33,3 +33,8 @@ local _switch = {
 function SWITCH()
 	_switch[os.time()%10]()
 end
+function TableLength(T)
+	local count = 0
+	for _ in pairs(T) do count = count + 1 end
+	return count
+end
