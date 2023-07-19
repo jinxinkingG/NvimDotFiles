@@ -75,6 +75,12 @@ wk.register({
 			name = "Trouble",
 			t = {"<cmd>TroubleToggle<CR>","Toggle Trouble"},
 			r = {"<cmd>TroubleRefresh<CR>","Refresh Trouble"}
+		},
+		l = {
+			name = "LSP Server",
+			j = {
+				name = "java",
+			}
 		}
 	},
 	[","]={
