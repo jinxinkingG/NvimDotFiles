@@ -12,7 +12,7 @@ local _switch = {
 		vim.cmd[[colorscheme nightfox]]
 	end,
 	[4]=function()
-		vim.cmd[[colorscheme dayfox]]
+		vim.cmd[[colorscheme duskfox]]
 	end,
 	[5]=function()
 		vim.cmd[[colorscheme dawnfox]]
