@@ -16,13 +16,8 @@ return function()
 		dashboard.button("e",icons.CreateFile .. '  Create New File', ':ene <BAR>startinsert<CR>'),
 		dashboard.button("q",icons.Exit .. '  Quit',':q!<CR>'),
 	}
-	if vim.g.neovide then
-	dashboard.config.layout[1].val = vim.fn.max { 2, vim.fn.floor(vim.fn.winheight(0) * 0.35) }
-	dashboard.config.layout[3].val = 2
-else
-	dashboard.config.layout[1].val = vim.fn.max { 2, vim.fn.floor(vim.fn.winheight(0) * 0.1) }
-	dashboard.config.layout[3].val = 2
-end
+	dashboard.config.layout[1].val = vim.fn.max { 2, vim.fn.floor(vim.fn.winheight(0) * 0.15) }
+	dashboard.config.layout[3].val = 4
 	dashboard.config.opts.noautocmd = true
 	return dashboard
 end
