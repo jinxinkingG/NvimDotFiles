@@ -21,19 +21,19 @@ require("mason-lspconfig").setup_handlers {
 					},
 					runtime = {
 					-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-					version = 'LuaJIT',
+						version = 'LuaJIT',
 					},
 					diagnostics = {
 					-- Get the language server to recognize the `vim` global
-					globals = {'vim'},
+						globals = {'vim'},
 					},
 					workspace = {
 					-- Make the server aware of Neovim runtime files
-					library = vim.api.nvim_get_runtime_file("", true),
+						library = vim.api.nvim_get_runtime_file("", true),
 					},
 					-- Do not send telemetry data containing a randomized but unique identifier
 					telemetry = {
-					enable = false,
+						enable = false,
 					},
 				},
 		  	},
@@ -48,5 +48,16 @@ require("mason-lspconfig").setup_handlers {
 				}
 			}
 		}
-	end
+	end,
+	-- java-language-server
+	["jdtls"] = function()
+		lspconfig.jdtls.setup{
+			cmd = { "jdtls", "-configuration", "C:\\Users\\jinxin\\AppData\\Local\\nvim-data\\mason\\packages\\jdtls\\config_win", "-data", "C:\\Users\\jinxin\\AppData\\Local\\nvim-data\\mason\\packages\\jdtls\\workspace" },
+			init_options = {
+				  jvm_args = {},
+				  workspace = "C:\\Users\\jinxin\\AppData\\Local\\nvim-data\\mason\\packages\\jdtls\\workspace"
+			}
+		}
+	end,
+
  }
