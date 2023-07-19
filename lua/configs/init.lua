@@ -18,7 +18,7 @@ vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true}
 
 -- change font
 if vim.g.neovide then
-vim.o.guifont ="MesloLGL Nerd Font Mono:h18"
+vim.o.guifont ="DejaVuSansM Nerd Font Mono:h18"
 end
 -- set relativenumber
 vim.wo.relativenumber = true
