@@ -16,3 +16,5 @@ require("core.functions")
 require("core.neovide")
 --load autocmd
 require("core.autocmd")
+--load icons
+require("core.icons")
