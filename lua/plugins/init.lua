@@ -2,7 +2,7 @@ return require("lazy").setup({
 	-- icons for lsp
 	{
 		"onsails/lspkind.nvim",
-		event = "InsertEnter",
+		event = "BufRead",
 		config = require "configs.lspkind"
 	},
 	--SchemaStore.nvim
@@ -52,15 +52,6 @@ return require("lazy").setup({
     		dependencies = { "rafamadriz/friendly-snippets" },
     		opts = { store_selection_keys = "<C-x>" },
 		config = require "configs.luasnip",
-	},
-	{
-		"doxnit/cmp-luasnip-choice",
-		event = "InsertEnter",
-		config = function()
-			require('cmp_luasnip_choice').setup({
-				auto_open = true,
-			})
-		end,
 	},
 	-- nvim-cmp
 	{
@@ -210,9 +201,7 @@ return require("lazy").setup({
   	--neodev
 	{
 		"folke/neodev.nvim",
-		event = "InsertEnter",
-		opts = {},
-		config = require "configs.neodev"
+		lazy = true,
 	},
 	--colorscheme
 	{"folke/tokyonight.nvim",lazy =false,priority = 1000},
