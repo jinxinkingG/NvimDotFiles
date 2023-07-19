@@ -70,7 +70,6 @@ cmp.setup({
 		['<CR>'] = cmp.mapping.confirm({ select = false}), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	}),
 	sources = cmp.config.sources({
-		{ name = 'luasnip_choice' },
 		{ name = 'nvim_lsp' },
 		-- { name = 'vsnip' }, -- For vsnip users.
 		{ name = 'luasnip' }, -- For luasnip users.
@@ -79,6 +78,7 @@ cmp.setup({
 	},
 	{
 		{ name = 'buffer' },
+		{ name = 'path' },
 	})
 })
 
@@ -101,7 +101,7 @@ cmp.setup.cmdline({ '/', '?' }, {
 })
 
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
- cmp.setup.cmdline(':', {
+cmp.setup.cmdline(':', {
 mapping = cmp.mapping.preset.cmdline(),
 	sources = cmp.config.sources({
 	{ name = 'path' }
