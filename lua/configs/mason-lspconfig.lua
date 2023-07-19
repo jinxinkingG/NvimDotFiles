@@ -1,3 +1,4 @@
+require("neodev").setup({})
 local lspconfig = require('lspconfig')
 require("mason-lspconfig").setup()
 require("mason-lspconfig").setup_handlers {
