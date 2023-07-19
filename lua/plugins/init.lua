@@ -1,4 +1,9 @@
 return require("lazy").setup({
+	--coq.nvim
+	{
+		"ms-jpq/coq_nvim",
+		lazy = true
+	},
 	--nvim-jdtls
 	{
 		"mfussenegger/nvim-jdtls",
@@ -51,9 +56,7 @@ return require("lazy").setup({
 	{
 		"L3MON4D3/LuaSnip",
 		event = "BufRead",
-    		build = vim.fn.has "win32" == 0
-        		and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build\n'; make install_jsregexp"
-      		or nil,
+    		build = "make install_jsregexp",
     		dependencies = { "rafamadriz/friendly-snippets" },
     		opts = { store_selection_keys = "<C-x>" },
 		config = require "configs.luasnip",
