@@ -4,6 +4,11 @@ return require("lazy").setup({
 		"ms-jpq/coq_nvim",
 		lazy = true
 	},
+	--nvim-dap
+	{
+		'mfussenegger/nvim-dap',
+		lazy = true,
+	},
 	--nvim-jdtls
 	{
 		"mfussenegger/nvim-jdtls",

@@ -14,12 +14,78 @@ require("mason-lspconfig").setup_handlers {
         end,
 	-- java-language-server
 	["jdtls"] = function()
+		local jdtls = require("jdtls")
+		local extendedClientCapabilities = jdtls.extendedClientCapabilities
+		extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 		lspconfig.jdtls.setup(coq.lsp_ensure_capabilities({
-			cmd = { "jdtls", "-configuration", "/Users/jinxin/.local/share/nvim/mason/packages/jdtls/config_mac", "-data", "/Users/jinxin/.local/share/nvim/mason/packages/jdtls/workspace" },
+			cmd = { "jdtls", "-configuration", "/Users/jinxin/.local/share/nvim/mason/packages/jdtls/config_mac", "-data", "/Users/jinxin/.local/share/nvim/mason/packages/jdtls/workspace"},
 			init_options = {
 				  jvm_args = {},
-				  workspace = "/Users/jinxin/.local/share/nvim/mason/packages/jdtls/workspace"
-			}
+				  workspace = "/Users/jinxin/.cache/jdtls/workspace"
+			},
+			settings = {
+ 				java = {
+					project = {
+						referencedLibraries = {
+						}
+					},
+ 				 -- jdt = {
+ 				 --   ls = {
+ 				 --     vmargs = "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -javaagent:/Users/jinxin/.local/share/nvim/mason/packages/jdtls/lombok.jar"
+ 				 --   }
+ 				 -- },
+ 					eclipse = {
+ 					  downloadSources = true,
+ 					},
+ 					configuration = {
+ 					  updateBuildConfiguration = "interactive",
+ 					},
+ 					maven = {
+ 					  downloadSources = true,
+ 					},
+ 					implementationsCodeLens = {
+ 					  enabled = true,
+ 					},
+ 					referencesCodeLens = {
+ 					  enabled = true,
+ 					},
+ 					references = {
+ 					  includeDecompiledSources = true,
+ 					},
+ 					format = {
+ 					  enabled = false,
+ 					  -- settings = {
+ 					  --   profile = "asdf"
+ 					  -- }
+ 					},
+ 				},
+    				signatureHelp = { enabled = true },
+    				completion = {
+    				  favoriteStaticMembers = {
+    				    "org.hamcrest.MatcherAssert.assertThat",
+    				    "org.hamcrest.Matchers.*",
+    				    "org.hamcrest.CoreMatchers.*",
+    				    "org.junit.jupiter.api.Assertions.*",
+    				    "java.util.Objects.requireNonNull",
+    				    "java.util.Objects.requireNonNullElse",
+    				    "org.mockito.Mockito.*",
+    				  },
+    				},
+    				contentProvider = { preferred = "fernflower" },
+    				extendedClientCapabilities = extendedClientCapabilities,
+    				sources = {
+    				  organizeImports = {
+    				    starThreshold = 9999,
+    				    staticStarThreshold = 9999,
+    				  },
+    				},
+    				codeGeneration = {
+    				  toString = {
+    				    template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
+    				  },
+    				  useBlocks = true,
+    				},
+  			},
 		}))
 	end,
         -- Next, you can provide a dedicated handler for specific servers.
