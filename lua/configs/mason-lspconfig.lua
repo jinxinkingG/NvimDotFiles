@@ -17,8 +17,8 @@ require("mason-lspconfig").setup_handlers {
 		local jdtls = require("jdtls")
 		local extendedClientCapabilities = jdtls.extendedClientCapabilities
 		extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
-		lspconfig.jdtls.setup(coq.lsp_ensure_capabilities({
-			cmd = { "jdtls", "-configuration", "/Users/jinxin/.local/share/nvim/mason/packages/jdtls/config_mac", "-data", "/Users/jinxin/.local/share/nvim/mason/packages/jdtls/workspace"},
+		lspconfig.jdtls.setup({
+			cmd = { "jdtls", "-configuration", "/Users/jinxin/.local/share/nvim/mason/packages/jdtls/config_mac", "-data", "/Users/jinxin/.cache/jdtls/workspace"},
 			init_options = {
 				  jvm_args = {},
 				  workspace = "/Users/jinxin/.cache/jdtls/workspace"
@@ -53,7 +53,7 @@ require("mason-lspconfig").setup_handlers {
  					  includeDecompiledSources = true,
  					},
  					format = {
- 					  enabled = false,
+ 					  enabled = true,
  					  -- settings = {
  					  --   profile = "asdf"
  					  -- }
@@ -86,12 +86,10 @@ require("mason-lspconfig").setup_handlers {
     				  useBlocks = true,
     				},
   			},
-		}))
+		})
 	end,
-        -- Next, you can provide a dedicated handler for specific servers.
-        -- For example, a handler override for the `rust_analyzer`:
+	--lua-language-server
         ["lua_ls"] = function ()
-		--lua-language-server
 		lspconfig.lua_ls.setup(coq.lsp_ensure_capabilities({
 			capabilities = capabilities,
 			settings = {

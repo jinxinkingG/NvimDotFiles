@@ -1,4 +1,15 @@
 return require("lazy").setup({
+	--lsp saga
+	{
+		'nvimdev/lspsaga.nvim',
+		config = function()
+		    require('lspsaga').setup({})
+		end,
+		dependencies = {
+		    'nvim-treesitter/nvim-treesitter', -- optional
+		    'nvim-tree/nvim-web-devicons'     -- optional
+		}
+	},
 	--coq.nvim
 	{
 		"ms-jpq/coq_nvim",
@@ -76,6 +87,7 @@ return require("lazy").setup({
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-git",
 		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"dcampos/cmp-snippy"
 		},
 		opts = function()
