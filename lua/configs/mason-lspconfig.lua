@@ -14,14 +14,30 @@ require("mason-lspconfig").setup_handlers {
         end,
 	-- java-language-server
 	["jdtls"] = function()
-		local jdtls = require("jdtls")
+		local jdtls= require("jdtls")
 		local extendedClientCapabilities = jdtls.extendedClientCapabilities
 		extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
-		lspconfig.jdtls.setup({
-			cmd = { "jdtls", "-configuration", "/Users/jinxin/.local/share/nvim/mason/packages/jdtls/config_mac", "-data", "/Users/jinxin/.cache/jdtls/workspace"},
+		local config={
+			capabilities = capabilities,
+			cmd = {
+				"java",
+				'-Declipse.application=org.eclipse.jdt.ls.core.id1',
+ 				'-Dosgi.bundles.defaultStartLevel=4',
+ 				'-Declipse.product=org.eclipse.jdt.ls.core.product',
+ 				'-Dlog.protocol=true',
+ 				'-Dlog.level=ALL',
+ 				'-Xmx4g',
+ 				'--add-modules=ALL-SYSTEM',
+ 				'--add-opens', 'java.base/java.util=ALL-UNNAMED',
+ 				'--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+				"-jar","/Users/jinxin/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.500.v20230622-2056.jar",
+				"-configuration", "/Users/jinxin/.local/share/nvim/mason/packages/jdtls/config_mac",
+				"-data", "/Users/jinxin/.cache/jdtls/workspace"
+			},
 			init_options = {
-				  jvm_args = {},
-				  workspace = "/Users/jinxin/.cache/jdtls/workspace"
+				extendedClientCapabilities = extendedClientCapabilities
+				  --jvm_args = {},
+				  --workspace = "/Users/jinxin/.cache/jdtls/workspace"
 			},
 			settings = {
  				java = {
@@ -86,7 +102,8 @@ require("mason-lspconfig").setup_handlers {
     				  useBlocks = true,
     				},
   			},
-		})
+		}
+		jdtls.start_or_attach(config)
 	end,
 	--lua-language-server
         ["lua_ls"] = function ()
