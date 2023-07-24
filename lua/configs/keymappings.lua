@@ -78,8 +78,23 @@ wk.register({
 		},
 		l = {
 			name = "LSP Server",
-			j = {
-				name = "java",
+		},
+		j = {
+			name = "JDT Language Server",
+			o = {"<cmd>lua require'jdtls'.organize_imports()<CR>","organize imports"},
+			p = {"<cmd>lua require'jdtls'.javap()<CR>","Javap"},
+			c = {
+				name = "Compile",
+				f = {"<cmd>lua require'jdtls'.compile('full')<CR>","compile full project"},
+				i = {"<cmd>lua require'jdtls'.compile('incremental')<CR>","compile incremental"},
+			},
+			u = {"<cmd>lua require'jdtls'.update_project_config({select_mode = 'prompt'})<CR>","Update project config"},
+			e = {
+				name = "extract actions",
+				o = {"<cmd>lua require'jdtls'.extract.opts<CR>","extract opts"},
+				c = {"<cmd>lua require'jdtls'.extract_contant()<CR>","extract constant"},
+				v = {"<cmd>lua require'jdtls'.extract_variable()<CR>","extract variable"},
+				a = {"<cmd>lua require'jdtls'.extract_variable_all()<CR>","extract variable all"},
 			}
 		}
 	},

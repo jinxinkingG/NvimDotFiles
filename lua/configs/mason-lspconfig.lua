@@ -18,6 +18,7 @@ require("mason-lspconfig").setup_handlers {
 		local extendedClientCapabilities = jdtls.extendedClientCapabilities
 		extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 		local config={
+			filetypes = {"java"},
 			capabilities = capabilities,
 			cmd = {
 				"java",
@@ -103,11 +104,14 @@ require("mason-lspconfig").setup_handlers {
     				},
   			},
 		}
-		jdtls.start_or_attach(config)
+		local custom_jdtls_setup = require'plugins.jdtls_setup'
+		config = custom_jdtls_setup.start_or_attach(config)
+		lspconfig.jdtls.setup(config)
 	end,
 	--lua-language-server
         ["lua_ls"] = function ()
 		lspconfig.lua_ls.setup(coq.lsp_ensure_capabilities({
+			filetypes = {"lua"},
 			capabilities = capabilities,
 			settings = {
 				Lua = {
