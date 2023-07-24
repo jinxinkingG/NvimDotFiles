@@ -1,4 +1,13 @@
 return require("lazy").setup({
+	-- nvim jdtls
+	{
+		'mfussenegger/nvim-jdtls',
+		lazy = true
+	},
+	{
+		'mfussenegger/nvim-dap',
+		lazy = true
+	},
 	-- icons for lsp
 	{
 		"onsails/lspkind.nvim",
