@@ -68,6 +68,20 @@ require("mason-lspconfig").setup_handlers({
 					},
 					configuration = {
 						updateBuildConfiguration = "interactive",
+						runtimes = {
+							{
+								name = "JavaSE-1.8",
+								path = "/Library/Java/JavaVirtualMachines/jdk-1.8.jdk/Contents/Home"
+							},
+							{
+								name = "JavaSE-11",
+								path = "/Library/Java/JavaVirtualMachines/jdk-11.0.13.jdk/Contents/Home"
+							},
+							{
+								name = "JavaSE-17",
+								path = "/Library/Java/JavaVirtualMachines/jdk-17.0.3.1.jdk/Contents/Home"
+							}
+						},
 					},
 					maven = {
 						downloadSources = true,
