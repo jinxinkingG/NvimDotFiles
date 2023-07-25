@@ -2,45 +2,45 @@
 return require("lazy").setup({
 	--lsp saga
 	{
-		'nvimdev/lspsaga.nvim',
+		"nvimdev/lspsaga.nvim",
 		lazy = true,
 		dependencies = {
-			'nvim-treesitter/nvim-treesitter', -- optional
-			'nvim-tree/nvim-web-devicons' -- optional
-		}
+			"nvim-treesitter/nvim-treesitter", -- optional
+			"nvim-tree/nvim-web-devicons", -- optional
+		},
 	},
 	--coq.nvim
 	{
 		"ms-jpq/coq_nvim",
-		lazy = true
+		lazy = true,
 	},
 	--nvim-dap
 	{
-		'mfussenegger/nvim-dap',
+		"mfussenegger/nvim-dap",
 		lazy = true,
 	},
 	--nvim-jdtls
 	{
 		"mfussenegger/nvim-jdtls",
-		lazy = true
+		lazy = true,
 	},
 	-- icons for lsp
 	{
 		"onsails/lspkind.nvim",
 		event = "BufRead",
-		config = require "configs.lspkind"
+		config = require("configs.lspkind"),
 	},
 	--SchemaStore.nvim
 	{
 		"b0o/schemastore.nvim",
-		lazy = true
+		lazy = true,
 	},
 	--trouble nvim
 	{
 		"folke/trouble.nvim",
 		event = "BufRead",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
-		opts = require("configs.trouble")
+		opts = require("configs.trouble"),
 	},
 	--null-ls.nvim
 	{
@@ -48,7 +48,7 @@ return require("lazy").setup({
 		event = "BufRead",
 		config = function()
 			require("configs.null-ls")
-		end
+		end,
 	},
 	--nvim autopairs
 	{
@@ -56,16 +56,16 @@ return require("lazy").setup({
 		event = "InsertEnter",
 		config = function()
 			require("configs.nvim-autopairs")
-		end
+		end,
 	},
 	-- nvim notify
 	{
 		"rcarriga/nvim-notify",
 		opts = {
 			fps = 60,
-			timeout = 3000
+			timeout = 3000,
 		},
-		config = require("configs.notify")
+		config = require("configs.notify"),
 	},
 	--luasnip
 	{
@@ -74,7 +74,7 @@ return require("lazy").setup({
 		build = "make install_jsregexp",
 		dependencies = { "rafamadriz/friendly-snippets" },
 		opts = { store_selection_keys = "<C-x>" },
-		config = require "configs.luasnip",
+		config = require("configs.luasnip"),
 	},
 	-- nvim-cmp
 	{
@@ -87,16 +87,15 @@ return require("lazy").setup({
 			"hrsh7th/cmp-git",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
-			"dcampos/cmp-snippy"
+			"dcampos/cmp-snippy",
 		},
 		opts = function()
-			require('configs.nvim-cmp')
-		end
-
+			require("configs.nvim-cmp")
+		end,
 	},
 	{
 		"hrsh7th/cmp-cmdline",
-		event = "CmdlineEnter"
+		event = "CmdlineEnter",
 	},
 	-- indent-blackline
 	{
@@ -104,18 +103,18 @@ return require("lazy").setup({
 		event = "BufRead",
 		config = function()
 			vim.opt.list = true
-			vim.opt.listchars:append "space:⋅"
-			vim.opt.listchars:append "eol:↴"
-			require("indent_blankline").setup {
+			vim.opt.listchars:append("space:⋅")
+			vim.opt.listchars:append("eol:↴")
+			require("indent_blankline").setup({
 				show_current_context = true,
 				show_current_context_start = true,
-				show_end_line = true
-			}
-		end
+				show_end_line = true,
+			})
+		end,
 	},
 	-- nvim-web-devicons
 	{
-		"nvim-tree/nvim-web-devicons"
+		"nvim-tree/nvim-web-devicons",
 	},
 	-- lualine
 	{
@@ -123,8 +122,8 @@ return require("lazy").setup({
 		event = "BufRead",
 		dependencies = { { "nvim-tree/nvim-web-devicons" } },
 		config = function()
-			require('configs.lualine')
-		end
+			require("configs.lualine")
+		end,
 	},
 	-- dashboard
 	{
@@ -132,16 +131,16 @@ return require("lazy").setup({
 		enabled = false,
 		event = "VimEnter",
 		config = function()
-			require('configs.dashboard')
+			require("configs.dashboard")
 		end,
-		dependencies = { { "nvim-tree/nvim-web-devicons" } }
+		dependencies = { { "nvim-tree/nvim-web-devicons" } },
 	},
 	{
 		"goolord/alpha-nvim",
 		event = "VimEnter",
-		opts = require('configs.dashboard-alpha'),
-		config = require('configs.alpha-config'),
-		dependencies = { { "nvim-tree/nvim-web-devicons" } }
+		opts = require("configs.dashboard-alpha"),
+		config = require("configs.alpha-config"),
+		dependencies = { { "nvim-tree/nvim-web-devicons" } },
 	},
 	-- bufferline.nvim
 	{
@@ -151,12 +150,12 @@ return require("lazy").setup({
 		dependencies = "nvim-tree/nvim-web-devicons",
 		config = function()
 			require("configs.bufferline")
-		end
+		end,
 	},
 	-- nvim-lspconfig
 	{
 		"neonvim/nvim-lspconfig",
-		lazy = true
+		lazy = true,
 	},
 	-- mason.nvim
 	{
@@ -173,7 +172,7 @@ return require("lazy").setup({
 		},
 		config = function()
 			require("mason").setup()
-		end
+		end,
 	},
 	-- mason-lspconfig.nvim
 	{
@@ -181,7 +180,7 @@ return require("lazy").setup({
 		event = "BufRead",
 		config = function()
 			require("configs.mason-lspconfig")
-		end
+		end,
 	},
 	-- nvim-treesitter
 	{
@@ -190,7 +189,7 @@ return require("lazy").setup({
 		build = ":TSUpdate",
 		config = function()
 			require("configs.treesitter")
-		end
+		end,
 	},
 	-- mappings
 	{
@@ -202,7 +201,7 @@ return require("lazy").setup({
 		end,
 		config = function()
 			require("configs.whichkey")
-		end
+		end,
 	},
 	-- telescope
 	{
@@ -212,16 +211,21 @@ return require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			require("configs.telescope")
-		end
+		end,
 	},
 	{
 		"nvim-telescope/telescope-ui-select.nvim",
-		lazy = true
+		lazy = true,
+	},
+	{
+		"nvim-telescope/telescope-file-browser.nvim",
+		lazy = true,
+		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 	},
 	{
 		"nvim-telescope/telescope-frecency.nvim",
 		lazy = true,
-		dependencies = { "kkharji/sqlite.lua" }
+		dependencies = { "kkharji/sqlite.lua" },
 	},
 	--neoconf
 	{
@@ -229,7 +233,7 @@ return require("lazy").setup({
 		cmd = "Neoconf",
 		config = function()
 			require("neoconf").setup()
-		end
+		end,
 	},
 	--neodev
 	{
@@ -237,24 +241,24 @@ return require("lazy").setup({
 		lazy = true,
 	},
 	--colorscheme
-	{ "folke/tokyonight.nvim",  lazy = false, priority = 1000 },
+	{ "folke/tokyonight.nvim", lazy = false, priority = 1000 },
 	{ "EdenEast/nightfox.nvim", lazy = false, priority = 1000 },
 	-- motion
 	{
 		"phaazon/hop.nvim",
-		event = 'BufRead',
+		event = "BufRead",
 		config = function()
 			require("hop").setup()
-		end
+		end,
 	},
 	-- nvim-tree
 	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
-		event = 'BufRead',
+		event = "BufRead",
 		config = function()
 			require("configs.nvim-tree")
-		end
+		end,
 	},
 	--	-- neo-tree
 	--	{
@@ -271,5 +275,4 @@ return require("lazy").setup({
 	--			"MunifTanjim/nui.nvim"
 	--		}
 	--	}
-
 })

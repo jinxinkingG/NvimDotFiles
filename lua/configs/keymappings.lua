@@ -54,6 +54,7 @@ wk.register({
 			f = { "<cmd>Telescope find_files<cr>","Find files"},
 			w = { "<cmd>Telescope live_grep<cr>","Find word"},
 			r = { "<cmd>Telescope oldfiles<cr>","Recent files"},
+			b = { "<cmd>Telescope file_browser<cr>","File browser"},
 		},
 		t = {
 			name = "Trouble",
