@@ -62,6 +62,10 @@ wk.register({
 		},
 		l = {
 			name = "LSP Server",
+			f = {"<cmd>lua vim.lsp.buf.format({async = true})<CR>",'Format file'},
+			c = {"<cmd>Lspsaga code_action<CR>",'Code Action'},
+
+			d = {"<cmd>Lspsaga hover_doc<CR>","Show hover doc"},
 		},
 		j = {
 			name = "JDT Language Server",

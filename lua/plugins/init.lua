@@ -2,9 +2,7 @@ return require("lazy").setup({
 	--lsp saga
 	{
 		'nvimdev/lspsaga.nvim',
-		config = function()
-		    require('lspsaga').setup({})
-		end,
+		lazy = true,
 		dependencies = {
 		    'nvim-treesitter/nvim-treesitter', -- optional
 		    'nvim-tree/nvim-web-devicons'     -- optional
