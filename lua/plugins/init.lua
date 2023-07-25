@@ -199,6 +199,10 @@ return require("lazy").setup({
 			require("configs.telescope")
 		end
 	},
+	{
+		"nvim-telescope/telescope-ui-select.nvim",
+		lazy = true
+	},
   	--neoconf
 	{
 		"folke/neoconf.nvim",
