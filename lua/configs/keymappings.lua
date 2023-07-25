@@ -1,20 +1,4 @@
 local wk = require("which-key")
--- leader
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
--- base key mappings
-wk.register({
-j={k={"<esc>","exit insert mode"}}
-},{ slient = true, nowait = true, mode = "i"});
-wk.register({
-["<leader>"]={
-	w={":w<CR>","save"},
-	m={":Mason<CR>","Mason"},
-	q={":q<CR>","exit"},
-	Q={":q!<CR>","exit"},
-}
-},{ slient = true, nowait = true, mode = "n"});
-wk.register({q = {"<esc>","exit visual mode"}},{mode = "v",nowait = true})
 
 -- opts
 local n_opts = {

@@ -16,6 +16,16 @@ vim.api.nvim_set_keymap('!', '<D-v>', '<C-R>+', { noremap = true, silent = true}
 vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true})
 
+-- leader
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+-- Base keymaps not use whichkey
+vim.keymap.set('n','<leader>q',':q<CR>')
+vim.keymap.set('n','<leader>Q',':q!<CR>')
+vim.keymap.set('n','<leader>w',':w<CR>')
+vim.keymap.set('i','jk','<esc>')
+vim.keymap.set('v','q','<esc>')
+
 -- change font
 if vim.g.neovide then
 vim.o.guifont ="DejaVuSansM Nerd Font Mono:h18"
