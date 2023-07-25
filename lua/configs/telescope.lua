@@ -3,7 +3,15 @@ require("telescope").setup({
 	mappings={
 		n = {
        		["q"] = require('telescope.actions').close
+		}
+  	},
+	extensions = {
+		["ui-select"] = {
+			require('telescope.themes').get_dropdown{
+			}
+		}
 	}
-  	}
   }
   })
+
+  require("telescope").load_extension('ui-select')
