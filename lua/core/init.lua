@@ -24,7 +24,9 @@ vim.opt.rtp:prepend(lazypath)
 --load global funtions
 require("core.functions")
 --load neovide configs
-require("core.neovide")
+if vim.g.neovide then
+	require("core.neovide")
+end
 --load autocmd
 require("core.autocmd")
 --load icons
