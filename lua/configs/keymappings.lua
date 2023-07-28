@@ -63,9 +63,6 @@ wk.register({
 		l = {
 			name = "LSP Server",
 			f = {"<cmd>lua vim.lsp.buf.format()<CR>","Format File"},
-			j = {
-				name = "java",
-			}
 		}
 	},
 	[","]={

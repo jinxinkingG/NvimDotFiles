@@ -1,13 +1,4 @@
 return require("lazy").setup({
-	-- nvim jdtls
-	{
-		'mfussenegger/nvim-jdtls',
-		lazy = true
-	},
-	{
-		'mfussenegger/nvim-dap',
-		lazy = true
-	},
 	-- icons for lsp
 	{
 		"onsails/lspkind.nvim",
@@ -36,11 +27,8 @@ return require("lazy").setup({
 	},
 	--nvim autopairs
 	{
-		"windwp/nvim-autopairs",
+		'jiangmiao/auto-pairs',
 		event = "InsertEnter",
-		config =function()
-			require("configs.nvim-autopairs")
-		end
 	},
 	-- nvim notify
 	{
@@ -55,9 +43,7 @@ return require("lazy").setup({
 	{
 		"L3MON4D3/LuaSnip",
 		event = "BufRead",
-    		build = vim.fn.has "win32" == 0
-        		and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build\n'; make install_jsregexp"
-      		or nil,
+    		build ="make install_jsregexp",
     		dependencies = { "rafamadriz/friendly-snippets" },
     		opts = { store_selection_keys = "<C-x>" },
 		config = require "configs.luasnip",
@@ -77,7 +63,6 @@ return require("lazy").setup({
 		opts = function()
 			require('configs.nvim-cmp')
 		end
-
 	},
 	{
 		"hrsh7th/cmp-cmdline",
@@ -111,16 +96,7 @@ return require("lazy").setup({
 		require('configs.lualine')
 	end
 	},
-	-- dashboard
-	{
-		"glepnir/dashboard-nvim",
-		enabled=false,
-		event="VimEnter",
-		config=function()
-			require('configs.dashboard')
-		end,
-		dependencies = { {"nvim-tree/nvim-web-devicons"}}
-	},
+	--dashboard
 	{
 		"goolord/alpha-nvim",
 		event = "VimEnter",
@@ -235,21 +211,6 @@ return require("lazy").setup({
 		config=function()
 			require("nvim-tree").setup()
 		end
-	},
---	-- neo-tree
---	{
---		"nvim-neo-tree/neo-tree.nvim",
---		branch="v2.x",
---		event="VimEnter",
---		enabled=false,
---		config=function()
---			require('configs.neotree')
---		end,
---		dependencies = {
---			"nvim-tree/nvim-web-devicons",
---			"nvim-lua/plenary.nvim",
---			"MunifTanjim/nui.nvim"
---		}
---	}
+	}
 
 })
