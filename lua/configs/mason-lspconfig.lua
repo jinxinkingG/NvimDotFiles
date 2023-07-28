@@ -11,14 +11,13 @@ require("mason-lspconfig").setup_handlers({
 		lspconfig[server_name].setup(coq.lsp_ensure_capabilities({
 			capabilities = capabilities,
 		}))
-		require('lspsaga').setup({})
 	end,
 	-- java-language-server
 	["jdtls"] = function()
 		local jdtls = require("jdtls")
 		local extendedClientCapabilities = jdtls.extendedClientCapabilities
 		extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
-		local project_name = vim.fn.fnamemodify(vim.fn.getcwd(),'')
+		local project_name = vim.fn.fnamemodify(vim.fn.getcwd(),':p:h:t')
 		local config = {
 			filetypes = { "java" },
 			capabilities = capabilities,
@@ -43,7 +42,6 @@ require("mason-lspconfig").setup_handlers({
 				"/Users/jinxin/.cache/jdtls/workspace" .. project_name,
 			},
 			init_options = {
---				extendedClientCapabilities = extendedClientCapabilities,
 				--jvm_args = {},
 				--workspace = "/Users/jinxin/.cache/jdtls/workspace"
 			},
@@ -138,7 +136,6 @@ require("mason-lspconfig").setup_handlers({
 		local custom_jdtls_setup = require("plugins.jdtls_setup")
 		config = custom_jdtls_setup.start_or_attach(config)
 		lspconfig.jdtls.setup(config)
-		require('lspsaga').setup({})
 	end,
 	--lua-language-server
 	["lua_ls"] = function()
@@ -169,7 +166,6 @@ require("mason-lspconfig").setup_handlers({
 				},
 			},
 		}))
-		require('lspsaga').setup({})
 	end,
 	["jsonls"] = function()
 		lspconfig.jsonls.setup(coq.lsp_ensure_capabilities({
@@ -182,6 +178,5 @@ require("mason-lspconfig").setup_handlers({
 				},
 			},
 		}))
-		require('lspsaga').setup({})
 	end,
 })

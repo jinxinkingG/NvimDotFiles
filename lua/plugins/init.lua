@@ -3,11 +3,14 @@ return require("lazy").setup({
 	--lsp saga
 	{
 		"nvimdev/lspsaga.nvim",
-		lazy = true,
+		event = "LspAttach",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter", -- optional
 			"nvim-tree/nvim-web-devicons", -- optional
 		},
+		config = function()
+			require('lspsaga').setup({})
+		end
 	},
 	--coq.nvim
 	{
@@ -45,7 +48,7 @@ return require("lazy").setup({
 	--null-ls.nvim
 	{
 		"jose-elias-alvarez/null-ls.nvim",
-		event = "BufRead",
+		event = "LspAttach",
 		config = function()
 			require("configs.null-ls")
 		end,
