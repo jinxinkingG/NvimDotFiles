@@ -1,6 +1,6 @@
 -- Color table for highlights
 -- stylua: ignore
-local colors = require('tokyonight.colors')
+local colors = require('tokyonight.colors').setup()
 --local colors = {
 --	bg       = '#202328',
 --	fg       = '#bbc2cf',
@@ -88,6 +88,6 @@ ins_right {
  	return msg
  	end,
  	icon = ' LSP:',
- 	color = { gui = 'bold', bg = colors.bg, fg = colors.fg},
+ 	color = { gui = 'bold', bg = colors.bg, fg = colors.green},
 }
 require("lualine").setup(config)
