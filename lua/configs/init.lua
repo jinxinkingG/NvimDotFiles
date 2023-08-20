@@ -22,9 +22,11 @@ vim.g.maplocalleader = " "
 -- Base keymaps not use whichkey
 vim.keymap.set('n','<leader>q',':q<CR>')
 vim.keymap.set('n','<leader>Q',':q!<CR>')
-vim.keymap.set('n','<leader>w',':w<CR>')
+vim.keymap.set('n','<leader>u',':w<CR>:source %<CR>')
 vim.keymap.set('i','jk','<esc>')
+vim.keymap.set('i','jj','<esc>')
 vim.keymap.set('v','q','<esc>')
+vim.keymap.set('n',';',':')
 
 -- change font
 if vim.g.neovide then
@@ -32,14 +34,18 @@ vim.o.guifont ="DejaVuSansM Nerd Font Mono:h18"
 end
 -- set relativenumber
 vim.wo.relativenumber = true
+vim.wo.number = true
+vim.wo.cursorline=true
 
 -- random theme
 SWITCH()
 
 -- nvim tree recommend configs
 	-- disable netrw at the very start of your init.lua
-	vim.g.loaded_netrw = 1
-	vim.g.loaded_netrwPlugin = 1
-	-- set termguicolors to enable highlight groups
-	vim.opt.termguicolors = true
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+-- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true
 
+-- sign define
+vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})

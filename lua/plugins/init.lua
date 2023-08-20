@@ -1,36 +1,59 @@
 ---@diagnostic disable: missing-fields
 return require("lazy").setup({
-	--lsp saga
 	{
-		"nvimdev/lspsaga.nvim",
-		event = "LspAttach",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter", -- optional
-			"nvim-tree/nvim-web-devicons", -- optional
-		},
-		config = function()
-			require('lspsaga').setup({})
-		end
+		'folke/flash.nvim',
+		event = "VeryLazy",
+		opts = {},
+		keys = {
+ 			{ "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+ 			{ "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+ 			{ "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+ 			{ "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+ 			{ "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+ 		},
 	},
-	--coq.nvim
-	{
-		"ms-jpq/coq_nvim",
-		lazy = true,
-	},
+	-- neodev.nvim
+	{ "folke/neodev.nvim", opts = {} },
 	--nvim-dap
 	{
 		"mfussenegger/nvim-dap",
 		lazy = true,
+		config = function()
+			local dap, dapui = require("dap"), require("dapui")
+			dap.listeners.after.event_initialized["dapui_config"] = function()
+			  dapui.open()
+			end
+			dap.listeners.before.event_terminated["dapui_config"] = function()
+			  dapui.close()
+			end
+			dap.listeners.before.event_exited["dapui_config"] = function()
+			  dapui.close()
+			end
+		end,
+		dependencies = {
+			{
+				'theHamsta/nvim-dap-virtual-text',
+				config = function()
+					require("nvim-dap-virtual-text").setup({})
+				end
+			},
+			{
+				'rcarriga/nvim-dap-ui',
+				config = function()
+					require("dapui").setup()
+				end
+			},
+		}
 	},
 	--nvim-jdtls
 	{
 		"mfussenegger/nvim-jdtls",
-		lazy = true,
+		lazy = true
 	},
 	-- icons for lsp
 	{
 		"onsails/lspkind.nvim",
-		event = "BufRead",
+		lazy = true,
 		config = require("configs.lspkind"),
 	},
 	--SchemaStore.nvim
@@ -41,14 +64,15 @@ return require("lazy").setup({
 	--trouble nvim
 	{
 		"folke/trouble.nvim",
-		event = "BufRead",
+		event = "LspAttach",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = require("configs.trouble"),
 	},
 	--null-ls.nvim
 	{
 		"jose-elias-alvarez/null-ls.nvim",
-		event = "LspAttach",
+		enabled = false,
+		event = {"BufNewFile","BufReadPost"},
 		config = function()
 			require("configs.null-ls")
 		end,
@@ -73,7 +97,7 @@ return require("lazy").setup({
 	--luasnip
 	{
 		"L3MON4D3/LuaSnip",
-		event = "BufRead",
+		event ={"BufReadPost","BufNewFile"},
 		build = "make install_jsregexp",
 		dependencies = { "rafamadriz/friendly-snippets" },
 		opts = { store_selection_keys = "<C-x>" },
@@ -103,7 +127,7 @@ return require("lazy").setup({
 	-- indent-blackline
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = "BufRead",
+		event ={"BufReadPost","BufNewFile"},
 		config = function()
 			vim.opt.list = true
 			vim.opt.listchars:append("space:⋅")
@@ -122,7 +146,7 @@ return require("lazy").setup({
 	-- lualine
 	{
 		"nvim-lualine/lualine.nvim",
-		event = "BufRead",
+		event = {"BufReadPost","BufNewFile"},
 		dependencies = { { "nvim-tree/nvim-web-devicons" } },
 		config = function()
 			require("configs.lualine")
@@ -148,7 +172,7 @@ return require("lazy").setup({
 	-- bufferline.nvim
 	{
 		"akinsho/bufferline.nvim",
-		event = "BufAdd",
+		event = {"BufReadPost","BufNewFile"},
 		version = "*",
 		dependencies = "nvim-tree/nvim-web-devicons",
 		config = function()
@@ -159,6 +183,18 @@ return require("lazy").setup({
 	{
 		"neonvim/nvim-lspconfig",
 		lazy = true,
+		dependencies = {
+			{
+				'nvimdev/lspsaga.nvim',
+				config = function()
+				    require('lspsaga').setup({})
+				end,
+				dependencies = {
+				    'nvim-treesitter/nvim-treesitter', -- optional
+				    'nvim-tree/nvim-web-devicons'     -- optional
+				}
+			}
+		}
 	},
 	-- mason.nvim
 	{
@@ -180,7 +216,6 @@ return require("lazy").setup({
 	-- mason-lspconfig.nvim
 	{
 		"williamboman/mason-lspconfig.nvim",
-		event = "BufRead",
 		config = function()
 			require("configs.mason-lspconfig")
 		end,
@@ -188,7 +223,7 @@ return require("lazy").setup({
 	-- nvim-treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
-		event = "BufRead",
+		event = {"BufReadPost","BufNewFile"},
 		build = ":TSUpdate",
 		config = function()
 			require("configs.treesitter")
@@ -197,7 +232,7 @@ return require("lazy").setup({
 	-- mappings
 	{
 		"folke/which-key.nvim",
-		event = "BufRead",
+		event = {"BufReadPost","BufNewFile"},
 		init = function()
 			vim.o.timeout = true
 			vim.o.timeoutlen = 300
@@ -238,18 +273,14 @@ return require("lazy").setup({
 			require("neoconf").setup()
 		end,
 	},
-	--neodev
-	{
-		"folke/neodev.nvim",
-		lazy = true,
-	},
 	--colorscheme
 	{ "folke/tokyonight.nvim", lazy = false, priority = 1000 },
 	{ "EdenEast/nightfox.nvim", lazy = false, priority = 1000 },
 	-- motion
 	{
 		"phaazon/hop.nvim",
-		event = "BufRead",
+		enabled = false,
+		event ={"BufReadPost","BufNewFile"},
 		config = function()
 			require("hop").setup()
 		end,
@@ -258,7 +289,6 @@ return require("lazy").setup({
 	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
-		event = "BufRead",
 		config = function()
 			require("configs.nvim-tree")
 		end,

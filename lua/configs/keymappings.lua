@@ -27,27 +27,57 @@ local i_opts = {
 }
 
 wk.register({
+	["g"] = {
+		d = {"<cmd>Lspsaga goto_definition<CR>","Go to Denfinition"},
+		t = {"<cmd>Lspsaga goto_type_definition<CR>","Go to Type Denfinition"},
+
+	},
 	["<leader>"]={
+		--nvim dap
+		d = {
+			name ="DAP",
+			b ={"<cmd>lua require('dap').toggle_breakpoint()<CR>","BreakPoint Toggle"},
+			i ={"<cmd>lua require('dap').step_into()<CR>","Step into"},
+			c ={"<cmd>lua require('dap').continue()<CR>","Continue"},
+			o ={"<cmd>lua require('dap').step_over()<CR>","Step over"},
+			r ={"<cmd>lua require('dap').repl_open()<CR>","repl open"},
+			l ={"<cmd>lua require('dap').run_last()<CR>","run last"},
+		},
+		w = {
+			name = "window",
+			w = {'<C-W>w', 'other-window'},
+			d = {'<C-W>c', 'delete-window'},
+			['-'] = {'<C-W>s', 'split-window-below'},
+			['|'] = {'<C-W>v', 'split-window-right'},
+			['2'] = {'<C-W>v', 'layout-double-columns'},
+			h = {'<C-W>h', 'window-left'},
+			j = {'<C-W>j', 'window-below'},
+			l = {'<C-W>l', 'window-right'},
+			k = {'<C-W>k', 'window-up'},
+			H = {'<C-W>5<', 'expand-window-left'},
+			J = {'<cmd>resize +5<CR>', 'expand-window-below'},
+			L = {'<C-W>5>', 'expand-window-right'},
+			K = {'<cmd>resize -5<CR>', 'expand-window-up'},
+			['='] = {'<C-W>=', 'balance-window'},
+			s = {'<C-W>s', 'split-window-below'},
+			v = {'<C-W>v', 'split-window-below'},
+			['?'] = {'Windows', 'fzf-window'},
+
+		},
 		-- nvim-tree key mappings
 		e ={
 			name = "Nvim-Tree",
-			e = { "<cmd>NvimTreeToggle<cr>","Open Or Close NvimTree"},
-			f = { "<cmd>NvimTreeFocus<cr>","NvimTree Focus"},
-			s = { "<cmd>NvimTreeFindFile!<cr>","Opened File Focus in NvimTree"},
+			t = { "<cmd>NvimTreeToggle<cr>","Open Or Close NvimTree"},
+			e = { "<cmd>NvimTreeFocus<cr>","NvimTree Focus"},
+			f = { "<cmd>NvimTreeFindFile!<cr>","Opened File Focus in NvimTree"},
 		},
-		-- hop key mappings
-		h ={
-			name = "Hop",
-			l = { "<cmd>HopLine<cr>","Hop Line"},
-			w = { "<cmd>HopWord<cr>","Hop Word"},
-			a = { "<cmd>HopAnywhere<cr>","Hop Anywhere"},
-		},
-		b ={
-		--bufferline key mappings
-			name = "bufferline",
-			b = {"<cmd>BufferLinePick<CR>","Pick a tab"},
-			c = {"<cmd>BufferLinePickClose<CR>","Pick a tab and Close"},
-		},
+-- 		-- hop key mappings
+-- 		h ={
+-- 			name = "Hop",
+-- 			l = { "<cmd>HopLine<cr>","Hop Line"},
+-- 			w = { "<cmd>HopWord<cr>","Hop Word"},
+-- 			a = { "<cmd>HopAnywhere<cr>","Hop Anywhere"},
+--		},
 		-- telescope key mappings
 		f ={
 			name = "Telescope",
@@ -63,34 +93,22 @@ wk.register({
 		},
 		l = {
 			name = "LSP Server",
+
 			f = {"<cmd>lua vim.lsp.buf.format({async = true})<CR>",'Format file'},
 			c = {"<cmd>Lspsaga code_action<CR>",'Code Action'},
 
+			i = {"<cmd>Lspsaga finder imp<CR>",'Find implements'},
+
+			e = {"<cmd>Lspsaga finder def+ref<CR>",'Find implements'},
+
+			r = {"<cmd>Lspsaga rename<CR>",'Rename'},
+
 			d = {"<cmd>Lspsaga hover_doc<CR>","Show hover doc"},
 		},
-		j = {
-			name = "JDT Language Server",
-			o = {"<cmd>lua require'jdtls'.organize_imports()<CR>","organize imports"},
-			p = {"<cmd>lua require'jdtls'.javap()<CR>","Javap"},
-			c = {
-				name = "Compile",
-				f = {"<cmd>lua require'jdtls'.compile('full')<CR>","compile full project"},
-				i = {"<cmd>lua require'jdtls'.compile('incremental')<CR>","compile incremental"},
-			},
-			u = {"<cmd>lua require'jdtls'.update_project_config({select_mode = 'prompt'})<CR>","Update project config"},
-			e = {
-				name = "extract actions",
-				o = {"<cmd>lua require'jdtls'.extract.opts<CR>","extract opts"},
-				c = {"<cmd>lua require'jdtls'.extract_contant()<CR>","extract constant"},
-				v = {"<cmd>lua require'jdtls'.extract_variable()<CR>","extract variable"},
-				a = {"<cmd>lua require'jdtls'.extract_variable_all()<CR>","extract variable all"},
-			}
-		}
+		x = {"<cmd>bdelete<CR>|<cmd>buffer<CR>","Close current tab"},
+		o = {"<C-o>","go back"},
+	i = {"<C-i>","go forward"},
 	},
-	[","]={
-		name = 'Tab Action',
-		q = {"<cmd>BufferLineCyclePre<CR>","Pick previous tab"},
-		e = {"<cmd>BufferLineCycleNext<CR>","Pick next tab"},
-		w = {"<cmd>bdelete<CR>|<cmd>buffer<CR>","Close current tab"}
-		}
+	["<tab>"] = {"<cmd>BufferLineCycleNext<CR>","Pick next tab"},
+	["<S-tab>"] = {"<cmd>BufferLineCyclePre<CR>","Pick previous tab"},
 },n_opts)
