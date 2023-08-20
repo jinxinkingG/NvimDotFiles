@@ -99,7 +99,7 @@ wk.register({
 
 			i = {"<cmd>Lspsaga finder imp<CR>",'Find implements'},
 
-			e = {"<cmd>Lspsaga finder def+ref<CR>",'Find implements'},
+			e = {"<cmd>Lspsaga finder def+ref<CR>",'Find reference'},
 
 			r = {"<cmd>Lspsaga rename<CR>",'Rename'},
 

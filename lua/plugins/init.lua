@@ -1,5 +1,14 @@
 ---@diagnostic disable: missing-fields
 return require("lazy").setup({
+	-- TODO heirline
+	{
+		'rebelot/heirline.nvim',
+		enabled = false,
+		config = function ()
+			require('configs.heirline')
+		end
+	},
+	-- flash nvim, vim motion
 	{
 		'folke/flash.nvim',
 		event = "VeryLazy",

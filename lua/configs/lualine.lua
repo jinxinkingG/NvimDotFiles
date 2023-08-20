@@ -1,22 +1,23 @@
 -- Color table for highlights
 -- stylua: ignore
-local colors = {
-	bg       = '#202328',
-	fg       = '#bbc2cf',
-	yellow   = '#ECBE7B',
-	cyan     = '#008080',
-	darkblue = '#081633',
-	green    = '#98be65',
-	orange   = '#FF8800',
-	violet   = '#a9a1e1',
-	magenta  = '#c678dd',
-	blue     = '#51afef',
-	red      = '#ec5f67',
-}
+local colors = require('tokyonight.colors')
+--local colors = {
+--	bg       = '#202328',
+--	fg       = '#bbc2cf',
+--	yellow   = '#ECBE7B',
+--	cyan     = '#008080',
+--	darkblue = '#081633',
+--	green    = '#98be65',
+--	orange   = '#FF8800',
+--	violet   = '#a9a1e1',
+--	magenta  = '#c678dd',
+--	blue     = '#51afef',
+--	red      = '#ec5f67',
+--}
 local config = {
   options = {
     icons_enabled = true,
-    theme = 'auto',
+    theme = 'tokyonight',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {
@@ -35,8 +36,8 @@ local config = {
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff'},
-    lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_c = {''},
+    lualine_x = {'encoding'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },
@@ -51,7 +52,7 @@ local config = {
   tabline = {},
   winbar = {},
   inactive_winbar = {},
-  extensions = {}
+  extensions = {'nvim-tree','fzf','nvim-dap-ui','trouble'}
 }
 local function ins_left(component)
 	table.insert(config.sections.lualine_c,component)
@@ -87,6 +88,6 @@ ins_right {
  	return msg
  	end,
  	icon = ' LSP:',
- 	color = { gui = 'bold' },
+ 	color = { gui = 'bold', bg = colors.bg, fg = colors.fg},
 }
 require("lualine").setup(config)

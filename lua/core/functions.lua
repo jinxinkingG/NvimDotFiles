@@ -1,6 +1,6 @@
 local _switch = {
 	[0]=function()
-		vim.cmd[[colorscheme tokyonight-night]]
+		vim.cmd[[colorscheme tokyonight]]
 	end,
 	[1]=function()
 		vim.cmd[[colorscheme tokyonight-storm]]
@@ -31,7 +31,7 @@ local _switch = {
 	end
 }
 function SWITCH()
-	_switch[os.time()%10]()
+	_switch[os.time()%3]()
 end
 function TableLength(T)
 	local count = 0
